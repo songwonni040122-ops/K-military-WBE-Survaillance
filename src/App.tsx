@@ -3,7 +3,7 @@ import AppShell from './components/layout/AppShell';
 import ThreatTicker from './components/dashboard/ThreatTicker';
 import MapView from './components/map/MapView';
 import OverviewDashboard from './components/dashboard/OverviewDashboard';
-import BaseDetailView from './components/base-detail/BaseDetailView';
+import BaseDetailPanel from './components/base-detail/BaseDetailPanel';
 import { AnimatePresence, motion } from 'framer-motion';
 
 export default function App() {
@@ -12,45 +12,51 @@ export default function App() {
   return (
     <AppShell>
       <ThreatTicker />
-      <AnimatePresence mode="wait">
-        {viewMode === 'overview' ? (
-          <motion.div
-            key="overview"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            style={{ display: 'flex', height: 'calc(100% - 28px)', overflow: 'hidden' }}
-          >
-            {/* Map - 60% */}
-            <div style={{ flex: 3, minWidth: 0 }}>
-              <MapView />
-            </div>
-            {/* Dashboard - 40% */}
-            <div
+      <div style={{ display: 'flex', height: 'calc(100% - 28px)', overflow: 'hidden' }}>
+        {/* 3D Map - always visible */}
+        <div style={{ flex: 1, minWidth: 0, position: 'relative' }}>
+          <MapView />
+        </div>
+
+        {/* Side Panel */}
+        <AnimatePresence mode="wait">
+          {viewMode === 'overview' ? (
+            <motion.div
+              key="overview-panel"
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: 20 }}
+              transition={{ duration: 0.3 }}
               style={{
-                flex: 2,
+                width: 420,
+                flexShrink: 0,
                 borderLeft: '1px solid var(--border-subtle)',
                 background: 'var(--bg-secondary)',
                 overflow: 'hidden',
               }}
             >
               <OverviewDashboard />
-            </div>
-          </motion.div>
-        ) : (
-          <motion.div
-            key="base-detail"
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.3 }}
-            style={{ height: 'calc(100% - 28px)', overflow: 'hidden' }}
-          >
-            <BaseDetailView />
-          </motion.div>
-        )}
-      </AnimatePresence>
+            </motion.div>
+          ) : (
+            <motion.div
+              key="detail-panel"
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: 20 }}
+              transition={{ duration: 0.3 }}
+              style={{
+                width: 420,
+                flexShrink: 0,
+                borderLeft: '1px solid var(--border-subtle)',
+                background: 'var(--bg-secondary)',
+                overflow: 'hidden',
+              }}
+            >
+              <BaseDetailPanel />
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
     </AppShell>
   );
 }
