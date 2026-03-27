@@ -4,6 +4,7 @@ import 'maplibre-gl/dist/maplibre-gl.css';
 import { useBaseData } from '../../hooks/useBaseData';
 import { useAppStore } from '../../stores/appStore';
 import { alertColors } from '../../utils/colorScale';
+import { generateAllBuildings } from '../../utils/buildingGenerator';
 import MapControls from './MapControls';
 import { bases as allBases } from '../../data/bases';
 
@@ -34,8 +35,8 @@ function flyToBounds(map: maplibregl.Map, baseId: string) {
   map.fitBounds(bounds, {
     padding: 80,
     duration: 2000,
-    pitch: 0,
-    bearing: 0,
+    pitch: 50,
+    bearing: -20,
   });
 }
 
@@ -293,6 +294,38 @@ export default function MapView() {
           }
           selectBase(baseId);
         }
+      });
+    }
+
+    // -- 3D Buildings (fill-extrusion) --
+    if (!map.getSource('base-buildings')) {
+      const buildingsGeoJSON = generateAllBuildings(allBases);
+      map.addSource('base-buildings', { type: 'geojson', data: buildingsGeoJSON });
+
+      map.addLayer({
+        id: 'base-buildings-3d',
+        type: 'fill-extrusion',
+        source: 'base-buildings',
+        paint: {
+          'fill-extrusion-color': ['get', 'color'],
+          'fill-extrusion-height': ['get', 'height'],
+          'fill-extrusion-base': 0,
+          'fill-extrusion-opacity': 0.7,
+        },
+        minzoom: 13,
+      });
+
+      // Building edges (outline at ground level for clarity)
+      map.addLayer({
+        id: 'base-buildings-outline',
+        type: 'line',
+        source: 'base-buildings',
+        paint: {
+          'line-color': ['get', 'color'],
+          'line-width': 0.5,
+          'line-opacity': 0.4,
+        },
+        minzoom: 13,
       });
     }
   }, [mapReady, bases, selectBase]);
