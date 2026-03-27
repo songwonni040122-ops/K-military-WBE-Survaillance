@@ -18,6 +18,8 @@ interface MilitaryBoundaryProps {
 export default function MilitaryBoundary({ base }: MilitaryBoundaryProps) {
   const selectBase = useAppStore((s) => s.selectBase);
 
+  if (!base.boundary || base.boundary.length < 3) return null;
+
   return (
     <Polygon
       positions={base.boundary}
@@ -47,22 +49,12 @@ export default function MilitaryBoundary({ base }: MilitaryBoundaryProps) {
         },
       }}
     >
-      <Tooltip
-        direction="top"
-        offset={[0, -10]}
-        opacity={0.95}
-        sticky
-      >
-        <div
-          style={{
-            background: '#0d0d15',
-            color: '#e0e0e8',
-            padding: '8px 12px',
-            borderRadius: '4px',
-            fontFamily: 'Share Tech Mono, monospace',
-            border: '1px solid rgba(204, 51, 51, 0.4)',
-          }}
-        >
+      <Tooltip direction="top" offset={[0, -10]} opacity={0.95} sticky>
+        <div style={{
+          background: '#0d0d15', color: '#e0e0e8', padding: '8px 12px',
+          borderRadius: '4px', fontFamily: 'Share Tech Mono, monospace',
+          border: '1px solid rgba(204, 51, 51, 0.4)',
+        }}>
           <div style={{ fontWeight: 700, fontSize: '0.85rem', marginBottom: 2 }}>
             {base.name}
           </div>
