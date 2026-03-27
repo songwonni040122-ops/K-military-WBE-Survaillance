@@ -2,7 +2,7 @@ import { useAppStore } from '../../stores/appStore';
 import { useBaseData } from '../../hooks/useBaseData';
 import { getBaseAlertLevel, getZoneAlertLevel } from '../../utils/alertLevel';
 import { getLatestSample } from '../../data/samples';
-import SatelliteBaseView from './SatelliteBaseView';
+import ThreeScene from './ThreeScene';
 import BaseInfoHeader from './BaseInfoHeader';
 import ZonePanel from './ZonePanel';
 import GuidelinesPanel from '../guidelines/GuidelinesPanel';
@@ -46,9 +46,9 @@ export default function BaseDetailView() {
     <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
       <BaseInfoHeader base={base} alertLevel={baseAlert} />
       <div style={{ flex: 1, display: 'flex', overflow: 'hidden' }}>
-        {/* Satellite View */}
+        {/* 3D View */}
         <div style={{ flex: 1, minWidth: 0 }}>
-          <SatelliteBaseView base={base} />
+          <ThreeScene base={base} />
         </div>
 
         {/* Data Panel */}

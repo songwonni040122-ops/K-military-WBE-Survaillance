@@ -18,6 +18,8 @@ export interface MilitaryBase {
   zones: Zone[];
   characteristics: string[];
   layout: BaseLayout;
+  /** OSM-traced boundary polygon (lat/lng pairs) for map overlay */
+  boundary: [number, number][];
 }
 
 export interface Zone {

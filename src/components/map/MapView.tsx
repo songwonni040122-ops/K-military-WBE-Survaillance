@@ -1,5 +1,5 @@
 import { MapContainer, TileLayer, ZoomControl } from 'react-leaflet';
-import BaseMarker from './BaseMarker';
+import MilitaryBoundary from './MilitaryBoundary';
 import MapControls from './MapControls';
 import { useBaseData } from '../../hooks/useBaseData';
 import 'leaflet/dist/leaflet.css';
@@ -26,7 +26,7 @@ export default function MapView() {
         />
         <ZoomControl position="bottomleft" />
         {bases.map((base) => (
-          <BaseMarker key={base.id} base={base} />
+          <MilitaryBoundary key={base.id} base={base} />
         ))}
       </MapContainer>
       <MapControls />
