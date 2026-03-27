@@ -1,0 +1,43 @@
+:root {
+  /* Backgrounds */
+  --bg-primary: #0a0a0f;
+  --bg-secondary: #0d0d15;
+  --bg-panel: rgba(15, 15, 25, 0.85);
+  --bg-elevated: rgba(25, 25, 45, 0.9);
+  --bg-hover: rgba(0, 229, 255, 0.05);
+
+  /* Accents */
+  --accent-cyan: #00e5ff;
+  --accent-teal: #00bfa5;
+  --accent-amber: #ffab00;
+  --accent-orange: #ff6e40;
+  --accent-red: #ff1744;
+  --accent-green: #00e676;
+  --accent-magenta: #e040fb;
+
+  /* Text */
+  --text-primary: #e0e0e8;
+  --text-secondary: #8888a0;
+  --text-dim: #555566;
+
+  /* Borders */
+  --border-subtle: rgba(255, 255, 255, 0.06);
+  --border-accent: rgba(0, 229, 255, 0.2);
+
+  /* Fonts */
+  --font-mono: 'Share Tech Mono', 'Fira Code', 'Courier New', monospace;
+  --font-display: 'Rajdhani', 'Orbitron', 'Segoe UI', sans-serif;
+  --font-body: 'Rajdhani', 'Segoe UI', sans-serif;
+
+  /* Spacing */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+
+  /* Border radius */
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-lg: 8px;
+}
