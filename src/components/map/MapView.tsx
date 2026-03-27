@@ -5,6 +5,7 @@ import { useBaseData } from '../../hooks/useBaseData';
 import { useAppStore } from '../../stores/appStore';
 import { alertColors } from '../../utils/colorScale';
 import MapControls from './MapControls';
+import { bases as allBases } from '../../data/bases';
 
 const SOUTH_KOREA_CENTER: [number, number] = [127.5, 36.5];
 const DEFAULT_ZOOM = 7;
@@ -18,6 +19,26 @@ const baseTypeLabels: Record<string, string> = {
   headquarters: '사령부',
 };
 
+/** Fly the map to a base's boundary bounding box */
+function flyToBounds(map: maplibregl.Map, baseId: string) {
+  const base = allBases.find((b) => b.id === baseId);
+  if (!base) return;
+
+  const lngs = base.boundary.map(([, lng]) => lng);
+  const lats = base.boundary.map(([lat]) => lat);
+  const bounds = new maplibregl.LngLatBounds(
+    [Math.min(...lngs), Math.min(...lats)],
+    [Math.max(...lngs), Math.max(...lats)],
+  );
+
+  map.fitBounds(bounds, {
+    padding: 80,
+    duration: 2000,
+    pitch: 0,
+    bearing: 0,
+  });
+}
+
 export default function MapView() {
   const mapContainerRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<maplibregl.Map | null>(null);
@@ -27,6 +48,7 @@ export default function MapView() {
   const { bases } = useBaseData();
   const selectBase = useAppStore((s) => s.selectBase);
   const selectedBaseId = useAppStore((s) => s.selectedBaseId);
+  const setMapInstance = useAppStore((s) => s.setMapInstance);
 
   // Initialize map
   useEffect(() => {
@@ -71,14 +93,26 @@ export default function MapView() {
 
     map.on('load', () => {
       mapRef.current = map;
+      setMapInstance(map);
       setMapReady(true);
     });
 
     return () => {
+      setMapInstance(null);
       map.remove();
       mapRef.current = null;
     };
-  }, []);
+  }, [setMapInstance]);
+
+  // React to selectedBaseId changes (e.g. from sidebar click)
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map || !mapReady) return;
+
+    if (selectedBaseId) {
+      flyToBounds(map, selectedBaseId);
+    }
+  }, [selectedBaseId, mapReady]);
 
   // Add all layers when map is ready
   useEffect(() => {
@@ -121,7 +155,6 @@ export default function MapView() {
         },
       });
 
-      // Boundary hover
       map.on('mouseenter', `boundary-fill-${base.id}`, () => {
         map.getCanvas().style.cursor = 'pointer';
         map.setPaintProperty(`boundary-fill-${base.id}`, 'fill-opacity', 0.35);
@@ -130,13 +163,12 @@ export default function MapView() {
         map.getCanvas().style.cursor = '';
         map.setPaintProperty(`boundary-fill-${base.id}`, 'fill-opacity', 0.18);
       });
-      // Boundary click
       map.on('click', `boundary-fill-${base.id}`, () => {
-        flyToBase(map, base.id);
+        selectBase(base.id);
       });
     });
 
-    // -- Native circle markers (GeoJSON source + circle layer) --
+    // -- Native circle markers --
     const markersGeoJSON: GeoJSON.FeatureCollection = {
       type: 'FeatureCollection',
       features: bases.map((base) => ({
@@ -160,7 +192,6 @@ export default function MapView() {
     if (!map.getSource('base-markers')) {
       map.addSource('base-markers', { type: 'geojson', data: markersGeoJSON });
 
-      // Glow layer (larger, more transparent)
       map.addLayer({
         id: 'base-markers-glow',
         type: 'circle',
@@ -176,7 +207,6 @@ export default function MapView() {
         },
       });
 
-      // Main circle layer
       map.addLayer({
         id: 'base-markers-circle',
         type: 'circle',
@@ -194,10 +224,8 @@ export default function MapView() {
         },
       });
 
-      // Hover: change cursor + enlarge
       map.on('mouseenter', 'base-markers-circle', (e) => {
         map.getCanvas().style.cursor = 'pointer';
-        // Show popup on hover
         if (e.features && e.features[0]) {
           const feat = e.features[0];
           const props = feat.properties!;
@@ -256,7 +284,6 @@ export default function MapView() {
         }
       });
 
-      // Click: fly to boundary
       map.on('click', 'base-markers-circle', (e) => {
         if (e.features && e.features[0]) {
           const baseId = e.features[0].properties!.baseId;
@@ -264,32 +291,11 @@ export default function MapView() {
             popupRef.current.remove();
             popupRef.current = null;
           }
-          flyToBase(map, baseId);
+          selectBase(baseId);
         }
       });
     }
-  }, [mapReady, bases]);
-
-  const flyToBase = useCallback((map: maplibregl.Map, baseId: string) => {
-    const base = bases.find((b) => b.id === baseId);
-    if (!base) return;
-
-    selectBase(base.id);
-
-    const lngs = base.boundary.map(([, lng]) => lng);
-    const lats = base.boundary.map(([lat]) => lat);
-    const bounds = new maplibregl.LngLatBounds(
-      [Math.min(...lngs), Math.min(...lats)],
-      [Math.max(...lngs), Math.max(...lats)],
-    );
-
-    map.fitBounds(bounds, {
-      padding: 80,
-      duration: 2000,
-      pitch: 0,
-      bearing: 0,
-    });
-  }, [selectBase, bases]);
+  }, [mapReady, bases, selectBase]);
 
   return (
     <div style={{ position: 'relative', width: '100%', height: '100%' }}>
@@ -315,23 +321,20 @@ export default function MapView() {
 
 function BackButton() {
   const goBack = useAppStore((s) => s.goBack);
+  const mapInstance = useAppStore((s) => s.mapInstance);
 
   const handleBack = useCallback(() => {
     goBack();
-    const container = document.querySelector('.maplibregl-map') as HTMLElement;
-    if (container) {
-      const map = (container as unknown as { _map?: maplibregl.Map })._map;
-      if (map) {
-        map.flyTo({
-          center: SOUTH_KOREA_CENTER,
-          zoom: DEFAULT_ZOOM,
-          pitch: 0,
-          bearing: 0,
-          duration: 1500,
-        });
-      }
+    if (mapInstance) {
+      mapInstance.flyTo({
+        center: SOUTH_KOREA_CENTER,
+        zoom: DEFAULT_ZOOM,
+        pitch: 0,
+        bearing: 0,
+        duration: 1500,
+      });
     }
-  }, [goBack]);
+  }, [goBack, mapInstance]);
 
   return (
     <button
