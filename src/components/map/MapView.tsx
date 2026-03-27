@@ -35,8 +35,8 @@ function flyToBounds(map: maplibregl.Map, baseId: string) {
   map.fitBounds(bounds, {
     padding: 80,
     duration: 2000,
-    pitch: 0,
-    bearing: 0,
+    pitch: 50,
+    bearing: -20,
   });
 }
 
