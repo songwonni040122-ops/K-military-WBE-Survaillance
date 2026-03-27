@@ -24,12 +24,19 @@ function generateSampleDates(count: number): string[] {
 // Pre-defined spike patterns for specific zones to make data interesting
 const spikeConfig: Record<string, { pathogen: PathogenId; multiplier: number }[]> = {
   'b01-z2': [{ pathogen: 'norovirus', multiplier: 2.3 }],
-  'b02-z1': [{ pathogen: 'influenza_a', multiplier: 1.7 }],
-  'b04-z1': [{ pathogen: 'norovirus', multiplier: 3.5 }, { pathogen: 'rotavirus', multiplier: 2.8 }],
-  'b04-z2': [{ pathogen: 'norovirus', multiplier: 2.4 }],
-  'b04-z3': [{ pathogen: 'influenza_a', multiplier: 1.6 }],
-  'b05-z2': [{ pathogen: 'adenovirus', multiplier: 1.8 }],
-  'b07-z2': [{ pathogen: 'sars_cov_2', multiplier: 2.2 }, { pathogen: 'influenza_b', multiplier: 2.0 }],
+  'b03-z1': [{ pathogen: 'influenza_a', multiplier: 1.7 }],
+  'b05-z1': [{ pathogen: 'norovirus', multiplier: 3.5 }, { pathogen: 'rotavirus', multiplier: 2.8 }],
+  'b05-z2': [{ pathogen: 'norovirus', multiplier: 2.4 }],
+  'b08-z3': [{ pathogen: 'influenza_a', multiplier: 1.6 }],
+  'b10-z2': [{ pathogen: 'adenovirus', multiplier: 1.8 }],
+  'b15-z2': [{ pathogen: 'sars_cov_2', multiplier: 2.2 }, { pathogen: 'influenza_b', multiplier: 2.0 }],
+  'b20-z1': [{ pathogen: 'norovirus', multiplier: 2.0 }],
+  'b25-z3': [{ pathogen: 'influenza_a', multiplier: 1.9 }],
+  'b30-z1': [{ pathogen: 'rotavirus', multiplier: 2.5 }],
+  'b35-z2': [{ pathogen: 'sars_cov_2', multiplier: 1.8 }],
+  'b40-z1': [{ pathogen: 'adenovirus', multiplier: 2.1 }],
+  'b45-z3': [{ pathogen: 'norovirus', multiplier: 2.6 }, { pathogen: 'influenza_b', multiplier: 1.5 }],
+  'b50-z2': [{ pathogen: 'influenza_a', multiplier: 2.3 }],
 };
 
 function generatePathogens(
