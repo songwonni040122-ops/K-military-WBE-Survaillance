@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/K-military-WBE-Survaillance/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>k-military-wbe-survaillance</title>
+    <script type="module" crossorigin src="/K-military-WBE-Survaillance/assets/index-D0UUZHXr.js"></script>
+    <link rel="stylesheet" crossorigin href="/K-military-WBE-Survaillance/assets/index-DXZJwXW2.css">
+  </head>
+  <body>
+    <div id="root"></div>
+    <script>
+      window.onerror = function(msg, url, line, col, err) {
+        document.getElementById('root').innerHTML =
+          '<div style="padding:40px;background:#0a0a0f;color:#ff4444;font-family:monospace;height:100vh">' +
+          '<h1 style="color:#ff6666">JS Error</h1>' +
+          '<pre style="color:#ffaaaa;white-space:pre-wrap">' + msg + '</pre>' +
+          '<pre style="color:#888;font-size:12px">' + (url||'') + ':' + (line||'') + '</pre>' +
+          '<pre style="color:#666;font-size:11px">' + (err && err.stack || '') + '</pre></div>';
+      };
+      window.addEventListener('unhandledrejection', function(e) {
+        document.getElementById('root').innerHTML =
+          '<div style="padding:40px;background:#0a0a0f;color:#ff4444;font-family:monospace;height:100vh">' +
+          '<h1 style="color:#ff6666">Unhandled Promise Rejection</h1>' +
+          '<pre style="color:#ffaaaa;white-space:pre-wrap">' + (e.reason && e.reason.message || e.reason || 'Unknown') + '</pre>' +
+          '<pre style="color:#666;font-size:11px">' + (e.reason && e.reason.stack || '') + '</pre></div>';
+      });
+    </script>
+  </body>
+</html>
