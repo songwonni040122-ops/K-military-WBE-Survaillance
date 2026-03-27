@@ -4,7 +4,7 @@ import 'maplibre-gl/dist/maplibre-gl.css';
 import { useBaseData } from '../../hooks/useBaseData';
 import { useAppStore } from '../../stores/appStore';
 import { alertColors } from '../../utils/colorScale';
-import { generateAllBuildings } from '../../utils/buildingGenerator';
+import { generateZonePolygons } from '../../utils/zonePolygons';
 import MapControls from './MapControls';
 import { bases as allBases } from '../../data/bases';
 
@@ -35,8 +35,8 @@ function flyToBounds(map: maplibregl.Map, baseId: string) {
   map.fitBounds(bounds, {
     padding: 80,
     duration: 2000,
-    pitch: 50,
-    bearing: -20,
+    pitch: 0,
+    bearing: 0,
   });
 }
 
@@ -297,35 +297,33 @@ export default function MapView() {
       });
     }
 
-    // -- 3D Buildings (fill-extrusion) --
-    if (!map.getSource('base-buildings')) {
-      const buildingsGeoJSON = generateAllBuildings(allBases);
-      map.addSource('base-buildings', { type: 'geojson', data: buildingsGeoJSON });
+    // -- Zone sub-polygons (split boundary into colored zones) --
+    if (!map.getSource('zone-polygons')) {
+      const zonesGeoJSON = generateZonePolygons(allBases);
+      map.addSource('zone-polygons', { type: 'geojson', data: zonesGeoJSON });
 
       map.addLayer({
-        id: 'base-buildings-3d',
-        type: 'fill-extrusion',
-        source: 'base-buildings',
+        id: 'zone-fills',
+        type: 'fill',
+        source: 'zone-polygons',
         paint: {
-          'fill-extrusion-color': ['get', 'color'],
-          'fill-extrusion-height': ['get', 'height'],
-          'fill-extrusion-base': 0,
-          'fill-extrusion-opacity': 0.7,
+          'fill-color': ['get', 'color'],
+          'fill-opacity': 0.25,
         },
-        minzoom: 13,
+        minzoom: 12,
       });
 
-      // Building edges (outline at ground level for clarity)
       map.addLayer({
-        id: 'base-buildings-outline',
+        id: 'zone-lines',
         type: 'line',
-        source: 'base-buildings',
+        source: 'zone-polygons',
         paint: {
           'line-color': ['get', 'color'],
-          'line-width': 0.5,
-          'line-opacity': 0.4,
+          'line-width': 2,
+          'line-opacity': 0.6,
+          'line-dasharray': [4, 2],
         },
-        minzoom: 13,
+        minzoom: 12,
       });
     }
   }, [mapReady, bases, selectBase]);
