@@ -27,14 +27,35 @@ export const bases: MilitaryBase[] = [
         { position: [8, 0.8, -7], size: [3, 1.6, 3], label: '의무실', zoneId: 'b01-z3' },
       ],
       zones: [
-        { id: 'b01-z1', color: '#00e5ff', area: { x: -12, z: -10, width: 8, depth: 20 } },
-        { id: 'b01-z2', color: '#e040fb', area: { x: -3, z: -10, width: 8, depth: 20 } },
-        { id: 'b01-z3', color: '#ffab00', area: { x: 5, z: -10, width: 10, depth: 20 } },
+        {
+          id: 'b01-z1', color: '#00e5ff',
+          area: { x: -12, z: -10, width: 8, depth: 20 },
+          polygon: [
+            [37.9035, 126.9460], [37.9035, 126.9490],
+            [37.9015, 126.9490], [37.9015, 126.9460],
+          ],
+        },
+        {
+          id: 'b01-z2', color: '#e040fb',
+          area: { x: -3, z: -10, width: 8, depth: 20 },
+          polygon: [
+            [37.9015, 126.9460], [37.9015, 126.9490],
+            [37.8995, 126.9490], [37.8995, 126.9460],
+          ],
+        },
+        {
+          id: 'b01-z3', color: '#ffab00',
+          area: { x: 5, z: -10, width: 10, depth: 20 },
+          polygon: [
+            [37.9025, 126.9495], [37.9025, 126.9535],
+            [37.8995, 126.9535], [37.8995, 126.9495],
+          ],
+        },
       ],
       confluencePoints: [
-        { position: [-8, 0.1, 8], zoneId: 'b01-z1' },
-        { position: [0, 0.1, 8], zoneId: 'b01-z2' },
-        { position: [8, 0.1, 8], zoneId: 'b01-z3' },
+        { position: [-8, 0.1, 8], zoneId: 'b01-z1', geoPosition: { lat: 37.8998, lng: 126.9475 } },
+        { position: [0, 0.1, 8], zoneId: 'b01-z2', geoPosition: { lat: 37.8998, lng: 126.9475 } },
+        { position: [8, 0.1, 8], zoneId: 'b01-z3', geoPosition: { lat: 37.8998, lng: 126.9515 } },
       ],
     },
   },
@@ -60,12 +81,26 @@ export const bases: MilitaryBase[] = [
         { position: [5, 1, 3], size: [5, 2, 3], label: '본부', zoneId: 'b02-z2' },
       ],
       zones: [
-        { id: 'b02-z1', color: '#00e5ff', area: { x: -10, z: -8, width: 10, depth: 16 } },
-        { id: 'b02-z2', color: '#e040fb', area: { x: 0, z: -8, width: 12, depth: 16 } },
+        {
+          id: 'b02-z1', color: '#00e5ff',
+          area: { x: -10, z: -8, width: 10, depth: 16 },
+          polygon: [
+            [37.7525, 127.0470], [37.7525, 127.0500],
+            [37.7505, 127.0500], [37.7505, 127.0470],
+          ],
+        },
+        {
+          id: 'b02-z2', color: '#e040fb',
+          area: { x: 0, z: -8, width: 12, depth: 16 },
+          polygon: [
+            [37.7525, 127.0505], [37.7525, 127.0540],
+            [37.7505, 127.0540], [37.7505, 127.0505],
+          ],
+        },
       ],
       confluencePoints: [
-        { position: [-6, 0.1, 8], zoneId: 'b02-z1' },
-        { position: [5, 0.1, 8], zoneId: 'b02-z2' },
+        { position: [-6, 0.1, 8], zoneId: 'b02-z1', geoPosition: { lat: 37.7505, lng: 127.0485 } },
+        { position: [5, 0.1, 8], zoneId: 'b02-z2', geoPosition: { lat: 37.7505, lng: 127.0522 } },
       ],
     },
   },
@@ -90,12 +125,26 @@ export const bases: MilitaryBase[] = [
         { position: [4, 1.5, 4], size: [5, 3, 4], label: '생활관', zoneId: 'b03-z2' },
       ],
       zones: [
-        { id: 'b03-z1', color: '#00e5ff', area: { x: -6, z: -8, width: 14, depth: 8 } },
-        { id: 'b03-z2', color: '#e040fb', area: { x: -8, z: 0, width: 18, depth: 8 } },
+        {
+          id: 'b03-z1', color: '#00e5ff',
+          area: { x: -6, z: -8, width: 14, depth: 8 },
+          polygon: [
+            [37.4820, 127.0375], [37.4820, 127.0415],
+            [37.4808, 127.0415], [37.4808, 127.0375],
+          ],
+        },
+        {
+          id: 'b03-z2', color: '#e040fb',
+          area: { x: -8, z: 0, width: 18, depth: 8 },
+          polygon: [
+            [37.4808, 127.0370], [37.4808, 127.0420],
+            [37.4795, 127.0420], [37.4795, 127.0370],
+          ],
+        },
       ],
       confluencePoints: [
-        { position: [0, 0.1, -7], zoneId: 'b03-z1' },
-        { position: [0, 0.1, 7], zoneId: 'b03-z2' },
+        { position: [0, 0.1, -7], zoneId: 'b03-z1', geoPosition: { lat: 37.4820, lng: 127.0395 } },
+        { position: [0, 0.1, 7], zoneId: 'b03-z2', geoPosition: { lat: 37.4795, lng: 127.0395 } },
       ],
     },
   },
@@ -124,14 +173,35 @@ export const bases: MilitaryBase[] = [
         { position: [10, 1, 5], size: [5, 2, 3], label: '식당', zoneId: 'b04-z3' },
       ],
       zones: [
-        { id: 'b04-z1', color: '#00e5ff', area: { x: -14, z: -10, width: 9, depth: 22 } },
-        { id: 'b04-z2', color: '#e040fb', area: { x: -4, z: -10, width: 9, depth: 22 } },
-        { id: 'b04-z3', color: '#ffab00', area: { x: 6, z: -10, width: 10, depth: 22 } },
+        {
+          id: 'b04-z1', color: '#00e5ff',
+          area: { x: -14, z: -10, width: 9, depth: 22 },
+          polygon: [
+            [38.1040, 127.7450], [38.1040, 127.7490],
+            [38.1010, 127.7490], [38.1010, 127.7450],
+          ],
+        },
+        {
+          id: 'b04-z2', color: '#e040fb',
+          area: { x: -4, z: -10, width: 9, depth: 22 },
+          polygon: [
+            [38.1040, 127.7495], [38.1040, 127.7535],
+            [38.1010, 127.7535], [38.1010, 127.7495],
+          ],
+        },
+        {
+          id: 'b04-z3', color: '#ffab00',
+          area: { x: 6, z: -10, width: 10, depth: 22 },
+          polygon: [
+            [38.1040, 127.7540], [38.1040, 127.7585],
+            [38.1010, 127.7585], [38.1010, 127.7540],
+          ],
+        },
       ],
       confluencePoints: [
-        { position: [-10, 0.1, 10], zoneId: 'b04-z1' },
-        { position: [0, 0.1, 10], zoneId: 'b04-z2' },
-        { position: [10, 0.1, 10], zoneId: 'b04-z3' },
+        { position: [-10, 0.1, 10], zoneId: 'b04-z1', geoPosition: { lat: 38.1010, lng: 127.7470 } },
+        { position: [0, 0.1, 10], zoneId: 'b04-z2', geoPosition: { lat: 38.1010, lng: 127.7515 } },
+        { position: [10, 0.1, 10], zoneId: 'b04-z3', geoPosition: { lat: 38.1010, lng: 127.7562 } },
       ],
     },
   },
@@ -157,12 +227,26 @@ export const bases: MilitaryBase[] = [
         { position: [6, 1.5, 3], size: [5, 3, 4], label: '생활관', zoneId: 'b05-z2' },
       ],
       zones: [
-        { id: 'b05-z1', color: '#00e5ff', area: { x: -10, z: -8, width: 12, depth: 16 } },
-        { id: 'b05-z2', color: '#e040fb', area: { x: 1, z: -8, width: 14, depth: 16 } },
+        {
+          id: 'b05-z1', color: '#00e5ff',
+          area: { x: -10, z: -8, width: 12, depth: 16 },
+          polygon: [
+            [36.3520, 127.3770], [36.3520, 127.3805],
+            [36.3502, 127.3805], [36.3502, 127.3770],
+          ],
+        },
+        {
+          id: 'b05-z2', color: '#e040fb',
+          area: { x: 1, z: -8, width: 14, depth: 16 },
+          polygon: [
+            [36.3520, 127.3810], [36.3520, 127.3850],
+            [36.3502, 127.3850], [36.3502, 127.3810],
+          ],
+        },
       ],
       confluencePoints: [
-        { position: [-4, 0.1, 7], zoneId: 'b05-z1' },
-        { position: [6, 0.1, 7], zoneId: 'b05-z2' },
+        { position: [-4, 0.1, 7], zoneId: 'b05-z1', geoPosition: { lat: 36.3502, lng: 127.3787 } },
+        { position: [6, 0.1, 7], zoneId: 'b05-z2', geoPosition: { lat: 36.3502, lng: 127.3830 } },
       ],
     },
   },
@@ -188,12 +272,26 @@ export const bases: MilitaryBase[] = [
         { position: [6, 1, 4], size: [5, 2, 3], label: '지원시설', zoneId: 'b06-z2' },
       ],
       zones: [
-        { id: 'b06-z1', color: '#00e5ff', area: { x: -12, z: -8, width: 12, depth: 16 } },
-        { id: 'b06-z2', color: '#e040fb', area: { x: 1, z: -8, width: 14, depth: 16 } },
+        {
+          id: 'b06-z1', color: '#00e5ff',
+          area: { x: -12, z: -8, width: 12, depth: 16 },
+          polygon: [
+            [35.1520, 128.9265], [35.1520, 128.9300],
+            [35.1500, 128.9300], [35.1500, 128.9265],
+          ],
+        },
+        {
+          id: 'b06-z2', color: '#e040fb',
+          area: { x: 1, z: -8, width: 14, depth: 16 },
+          polygon: [
+            [35.1520, 128.9305], [35.1520, 128.9345],
+            [35.1500, 128.9345], [35.1500, 128.9305],
+          ],
+        },
       ],
       confluencePoints: [
-        { position: [-8, 0.1, 8], zoneId: 'b06-z1' },
-        { position: [6, 0.1, 8], zoneId: 'b06-z2' },
+        { position: [-8, 0.1, 8], zoneId: 'b06-z1', geoPosition: { lat: 35.1500, lng: 128.9282 } },
+        { position: [6, 0.1, 8], zoneId: 'b06-z2', geoPosition: { lat: 35.1500, lng: 128.9325 } },
       ],
     },
   },
@@ -221,14 +319,35 @@ export const bases: MilitaryBase[] = [
         { position: [9, 0.8, 4], size: [4, 1.6, 3], label: '탄약고', zoneId: 'b07-z3' },
       ],
       zones: [
-        { id: 'b07-z1', color: '#00e5ff', area: { x: -13, z: -9, width: 9, depth: 18 } },
-        { id: 'b07-z2', color: '#e040fb', area: { x: -3, z: -9, width: 9, depth: 18 } },
-        { id: 'b07-z3', color: '#ffab00', area: { x: 6, z: -9, width: 10, depth: 18 } },
+        {
+          id: 'b07-z1', color: '#00e5ff',
+          area: { x: -13, z: -9, width: 9, depth: 18 },
+          polygon: [
+            [37.3525, 127.9465], [37.3525, 127.9500],
+            [37.3505, 127.9500], [37.3505, 127.9465],
+          ],
+        },
+        {
+          id: 'b07-z2', color: '#e040fb',
+          area: { x: -3, z: -9, width: 9, depth: 18 },
+          polygon: [
+            [37.3525, 127.9505], [37.3525, 127.9540],
+            [37.3505, 127.9540], [37.3505, 127.9505],
+          ],
+        },
+        {
+          id: 'b07-z3', color: '#ffab00',
+          area: { x: 6, z: -9, width: 10, depth: 18 },
+          polygon: [
+            [37.3525, 127.9545], [37.3525, 127.9585],
+            [37.3505, 127.9585], [37.3505, 127.9545],
+          ],
+        },
       ],
       confluencePoints: [
-        { position: [-9, 0.1, 8], zoneId: 'b07-z1' },
-        { position: [0, 0.1, 8], zoneId: 'b07-z2' },
-        { position: [9, 0.1, 8], zoneId: 'b07-z3' },
+        { position: [-9, 0.1, 8], zoneId: 'b07-z1', geoPosition: { lat: 37.3505, lng: 127.9482 } },
+        { position: [0, 0.1, 8], zoneId: 'b07-z2', geoPosition: { lat: 37.3505, lng: 127.9522 } },
+        { position: [9, 0.1, 8], zoneId: 'b07-z3', geoPosition: { lat: 37.3505, lng: 127.9565 } },
       ],
     },
   },

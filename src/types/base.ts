@@ -32,7 +32,7 @@ export interface BaseLayout {
   grounds: { width: number; depth: number };
   buildings: BuildingBlock[];
   zones: ZoneDefinition[];
-  confluencePoints: { position: [number, number, number]; zoneId: string }[];
+  confluencePoints: ConfluencePointDef[];
 }
 
 export interface BuildingBlock {
@@ -46,4 +46,13 @@ export interface ZoneDefinition {
   id: string;
   color: string;
   area: { x: number; z: number; width: number; depth: number };
+  /** Lat/lng polygon for satellite overlay */
+  polygon: [number, number][];
+}
+
+export interface ConfluencePointDef {
+  position: [number, number, number];
+  zoneId: string;
+  /** Lat/lng position for satellite overlay */
+  geoPosition: { lat: number; lng: number };
 }
