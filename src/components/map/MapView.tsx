@@ -4,15 +4,12 @@ import 'maplibre-gl/dist/maplibre-gl.css';
 import { useBaseData } from '../../hooks/useBaseData';
 import { useAppStore } from '../../stores/appStore';
 import { alertColors } from '../../utils/colorScale';
-import { createThreeLayer } from './ThreeOverlay';
 import MapControls from './MapControls';
 import type { MilitaryBase } from '../../types';
 import type { BaseWithAlert } from '../../hooks/useBaseData';
 
-const SOUTH_KOREA_CENTER: [number, number] = [127.5, 36.5]; // [lng, lat] for MapLibre
+const SOUTH_KOREA_CENTER: [number, number] = [127.5, 36.5];
 const DEFAULT_ZOOM = 7;
-const DETAIL_ZOOM = 16;
-const THREE_LAYER_MIN_ZOOM = 14;
 
 const baseTypeLabels: Record<string, string> = {
   infantry: '보병',
@@ -27,13 +24,11 @@ export default function MapView() {
   const mapContainerRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<maplibregl.Map | null>(null);
   const markersRef = useRef<maplibregl.Marker[]>([]);
-  const threeLayerRef = useRef<ReturnType<typeof createThreeLayer> | null>(null);
   const [mapReady, setMapReady] = useState(false);
 
   const { bases } = useBaseData();
   const selectBase = useAppStore((s) => s.selectBase);
   const selectedBaseId = useAppStore((s) => s.selectedBaseId);
-  const selectedZoneId = useAppStore((s) => s.selectedZoneId);
 
   // Initialize map
   useEffect(() => {
@@ -92,13 +87,12 @@ export default function MapView() {
     const map = mapRef.current;
     if (!map || !mapReady || bases.length === 0) return;
 
-    // Add boundary polygons as GeoJSON sources
     bases.forEach((base) => {
       const sourceId = `boundary-${base.id}`;
       if (map.getSource(sourceId)) return;
 
       const coords = base.boundary.map(([lat, lng]) => [lng, lat]);
-      if (coords.length > 0) coords.push(coords[0]); // close polygon
+      if (coords.length > 0) coords.push(coords[0]);
 
       map.addSource(sourceId, {
         type: 'geojson',
@@ -120,7 +114,6 @@ export default function MapView() {
           'fill-color': '#cc2222',
           'fill-opacity': 0.18,
         },
-        maxzoom: THREE_LAYER_MIN_ZOOM,
       });
 
       map.addLayer({
@@ -133,10 +126,8 @@ export default function MapView() {
           'line-opacity': 0.7,
           'line-dasharray': [6, 4],
         },
-        maxzoom: THREE_LAYER_MIN_ZOOM,
       });
 
-      // Click handler for boundary
       map.on('click', `boundary-fill-${base.id}`, () => {
         flyToBase(map, base);
       });
@@ -152,13 +143,7 @@ export default function MapView() {
       });
     });
 
-    // Add markers
     addMarkers(map, bases);
-
-    // Add Three.js layer for 3D buildings
-    const threeLayer = createThreeLayer(map, bases);
-    threeLayerRef.current = threeLayer;
-    map.addLayer(threeLayer.layer);
 
     return () => {
       markersRef.current.forEach((m) => m.remove());
@@ -166,21 +151,22 @@ export default function MapView() {
     };
   }, [mapReady, bases]);
 
-  // Update Three.js layer when selection changes
-  useEffect(() => {
-    if (threeLayerRef.current) {
-      threeLayerRef.current.setSelection(selectedBaseId, selectedZoneId);
-    }
-  }, [selectedBaseId, selectedZoneId]);
-
   const flyToBase = useCallback((map: maplibregl.Map, base: MilitaryBase | BaseWithAlert) => {
     selectBase(base.id);
-    map.flyTo({
-      center: [base.location.lng, base.location.lat],
-      zoom: DETAIL_ZOOM,
-      pitch: 55,
-      bearing: -20,
+
+    // Compute bounding box of boundary polygon and fit to it
+    const lngs = base.boundary.map(([, lng]) => lng);
+    const lats = base.boundary.map(([lat]) => lat);
+    const bounds = new maplibregl.LngLatBounds(
+      [Math.min(...lngs), Math.min(...lats)],
+      [Math.max(...lngs), Math.max(...lats)],
+    );
+
+    map.fitBounds(bounds, {
+      padding: 80,
       duration: 2000,
+      pitch: 0,
+      bearing: 0,
     });
   }, [selectBase]);
 
@@ -244,7 +230,7 @@ export default function MapView() {
             text-align: center; padding: 4px;
             border: 1px solid rgba(0,229,255,0.2); border-radius: 2px;
           ">
-            클릭하여 3D 뷰 &rarr;
+            상세 보기 &rarr;
           </div>
         </div>
       `);
