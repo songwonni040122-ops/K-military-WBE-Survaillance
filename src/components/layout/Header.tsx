@@ -33,48 +33,17 @@ export default function Header() {
         flexShrink: 0,
       }}
     >
-      <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-        <div
-          style={{
-            width: 32,
-            height: 32,
-            borderRadius: 4,
-            background: 'linear-gradient(135deg, var(--accent-cyan), var(--accent-teal))',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            fontFamily: 'var(--font-display)',
-            fontWeight: 700,
-            fontSize: '0.9rem',
-            color: '#0a0a0f',
-          }}
-        >
-          DS
-        </div>
-        <div>
-          <div
-            style={{
-              fontFamily: 'var(--font-display)',
-              fontSize: '1.1rem',
-              fontWeight: 700,
-              letterSpacing: '0.15em',
-              color: 'var(--accent-cyan)',
-              lineHeight: 1,
-            }}
-          >
-            DEEPSTREAM
-          </div>
-          <div
-            style={{
-              fontFamily: 'var(--font-mono)',
-              fontSize: '0.6rem',
-              color: 'var(--text-dim)',
-              letterSpacing: '0.1em',
-            }}
-          >
-            WASTEWATER-BASED EPIDEMIOLOGICAL SURVEILLANCE
-          </div>
-        </div>
+      <div
+        style={{
+          fontFamily: 'var(--font-display)',
+          fontSize: '1.1rem',
+          fontWeight: 700,
+          letterSpacing: '0.15em',
+          color: 'rgba(255, 255, 255, 0.35)',
+          lineHeight: 1,
+        }}
+      >
+        DEEPSTREAM
       </div>
 
       <div

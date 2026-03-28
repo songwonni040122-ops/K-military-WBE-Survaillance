@@ -7,60 +7,62 @@ export default function ThreatTicker() {
 
   if (alertBases.length === 0) return null;
 
-  const items = alertBases.map((ab) => {
-    const pathogen = pathogenMap[ab.pathogen];
-    return `[${ab.level.toUpperCase()}] ${ab.baseName} - ${pathogen?.nameKo || ab.pathogen} 검출 상승`;
-  });
+  // Show up to 3 most critical alerts as fixed notification cards
+  const top = alertBases.slice(0, 3);
 
   return (
     <div
       style={{
-        width: '100%',
-        overflow: 'hidden',
-        background: 'rgba(255, 23, 68, 0.08)',
-        borderBottom: '1px solid rgba(255, 23, 68, 0.15)',
-        padding: '4px 0',
+        display: 'flex',
+        gap: 8,
+        padding: '4px 12px',
+        background: 'rgba(255, 23, 68, 0.06)',
+        borderBottom: '1px solid rgba(255, 23, 68, 0.12)',
         flexShrink: 0,
+        overflow: 'hidden',
       }}
     >
-      <div
-        style={{
-          display: 'inline-block',
-          whiteSpace: 'nowrap',
-          animation: 'ticker-scroll 30s linear infinite',
-          fontFamily: 'var(--font-mono)',
-          fontSize: '0.7rem',
-          letterSpacing: '0.05em',
-        }}
-      >
-        {items.map((_item, i) => (
-          <span key={i}>
-            <span style={{ color: alertColors[alertBases[i].level], fontWeight: 600 }}>
-              [{alertBases[i].level.toUpperCase()}]
+      {top.map((ab, i) => {
+        const color = alertColors[ab.level];
+        const pathogen = pathogenMap[ab.pathogen];
+        return (
+          <div
+            key={i}
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: 6,
+              padding: '3px 10px',
+              background: `${color}10`,
+              border: `1px solid ${color}25`,
+              borderRadius: 2,
+              fontFamily: 'var(--font-mono)',
+              fontSize: '0.65rem',
+              whiteSpace: 'nowrap',
+            }}
+          >
+            <span style={{ color, fontWeight: 700, textTransform: 'uppercase', fontSize: '0.6rem' }}>
+              [{ab.level}]
             </span>
-            <span style={{ color: 'var(--text-primary)', marginLeft: 4 }}>
-              {alertBases[i].baseName} - {pathogenMap[alertBases[i].pathogen]?.nameKo} 검출 상승
+            <span style={{ color: 'var(--text-primary)' }}>
+              {ab.baseName}
             </span>
-            {i < items.length - 1 && (
-              <span style={{ color: 'var(--text-dim)', margin: '0 16px' }}>///</span>
-            )}
-          </span>
-        ))}
-        <span style={{ color: 'var(--text-dim)', margin: '0 16px' }}>///</span>
-        {items.map((_item, i) => (
-          <span key={`dup-${i}`}>
-            <span style={{ color: alertColors[alertBases[i].level], fontWeight: 600 }}>
-              [{alertBases[i].level.toUpperCase()}]
+            <span style={{ color: 'var(--text-dim)' }}>-</span>
+            <span style={{ color: 'var(--text-secondary)' }}>
+              {pathogen?.nameKo || ab.pathogen}
             </span>
-            <span style={{ color: 'var(--text-primary)', marginLeft: 4 }}>
-              {alertBases[i].baseName} - {pathogenMap[alertBases[i].pathogen]?.nameKo} 검출 상승
-            </span>
-            {i < items.length - 1 && (
-              <span style={{ color: 'var(--text-dim)', margin: '0 16px' }}>///</span>
-            )}
-          </span>
-        ))}
-      </div>
+          </div>
+        );
+      })}
+      {alertBases.length > 3 && (
+        <div style={{
+          display: 'flex', alignItems: 'center',
+          fontFamily: 'var(--font-mono)', fontSize: '0.6rem', color: 'var(--text-dim)',
+          padding: '0 6px',
+        }}>
+          +{alertBases.length - 3}건
+        </div>
+      )}
     </div>
   );
 }
