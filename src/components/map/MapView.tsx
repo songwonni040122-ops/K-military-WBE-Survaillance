@@ -61,6 +61,7 @@ export default function MapView() {
 
   const { bases } = useBaseData();
   const selectBase = useAppStore((s) => s.selectBase);
+  const selectZone = useAppStore((s) => s.selectZone);
   const selectedBaseId = useAppStore((s) => s.selectedBaseId);
   const setMapInstance = useAppStore((s) => s.setMapInstance);
 
@@ -332,6 +333,21 @@ export default function MapView() {
           'line-width': 1.5,
           'line-opacity': 0.5,
         },
+      });
+
+      // Zone click → select zone
+      map.on('click', 'zone-fills', (e) => {
+        if (e.features && e.features[0]) {
+          const props = e.features[0].properties!;
+          const baseId = props.baseId;
+          const zoneId = props.zoneId;
+          // First select the base if not already selected
+          if (baseId !== useAppStore.getState().selectedBaseId) {
+            selectBase(baseId);
+          }
+          selectZone(zoneId);
+          e.originalEvent.stopPropagation();
+        }
       });
 
       // Staircase border lines (LineString features)

@@ -12,6 +12,7 @@ interface AppState {
   setMapInstance: (map: maplibregl.Map | null) => void;
   selectBase: (baseId: string) => void;
   selectZone: (zoneId: string) => void;
+  clearZone: () => void;
   goBack: () => void;
 }
 
@@ -28,6 +29,7 @@ export const useAppStore = create<AppState>((set) => ({
     selectedZoneId: null,
   }),
   selectZone: (zoneId) => set({ selectedZoneId: zoneId }),
+  clearZone: () => set({ selectedZoneId: null }),
   goBack: () => set({
     viewMode: 'overview',
     selectedBaseId: null,

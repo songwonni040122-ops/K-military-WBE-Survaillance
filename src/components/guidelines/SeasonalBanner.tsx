@@ -1,10 +1,10 @@
 import { getCurrentSeason } from '../../utils/guidelineEngine';
 
-const seasonInfo: Record<string, { label: string; icon: string; color: string }> = {
-  spring: { label: '봄', icon: '🌸', color: '#00e676' },
-  summer: { label: '여름', icon: '☀️', color: '#ffab00' },
-  autumn: { label: '가을', icon: '🍂', color: '#ff6e40' },
-  winter: { label: '겨울', icon: '❄️', color: '#00e5ff' },
+const seasonInfo: Record<string, { label: string; color: string }> = {
+  spring: { label: '봄', color: '#00e676' },
+  summer: { label: '여름', color: '#ffab00' },
+  autumn: { label: '가을', color: '#ff6e40' },
+  winter: { label: '겨울', color: '#00e5ff' },
 };
 
 export default function SeasonalBanner() {
@@ -26,9 +26,8 @@ export default function SeasonalBanner() {
         marginBottom: 8,
       }}
     >
-      <span>{info.icon}</span>
-      <span style={{ color: info.color }}>현재 계절: {info.label}</span>
-      <span style={{ color: 'var(--text-dim)' }}>| 계절 특성 반영 지침</span>
+      <span style={{ color: info.color, fontWeight: 700 }}>[{info.label}]</span>
+      <span style={{ color: 'var(--text-dim)' }}>계절 특성 반영 지침 적용 중</span>
     </div>
   );
 }
