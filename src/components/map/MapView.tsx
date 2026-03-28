@@ -248,6 +248,9 @@ export default function MapView() {
         id: 'base-markers-glow',
         type: 'circle',
         source: 'base-markers',
+        layout: {
+          'circle-sort-key': ['match', ['get', 'alertLevel'], 'critical', 3, 'warning', 2, 'caution', 1, 0],
+        },
         paint: {
           'circle-radius': ['match', ['get', 'alertLevel'], 'critical', 18, 'warning', 15, 12],
           'circle-color': ['get', 'color'],
@@ -260,6 +263,9 @@ export default function MapView() {
         id: 'base-markers-circle',
         type: 'circle',
         source: 'base-markers',
+        layout: {
+          'circle-sort-key': ['match', ['get', 'alertLevel'], 'critical', 3, 'warning', 2, 'caution', 1, 0],
+        },
         paint: {
           'circle-radius': ['match', ['get', 'alertLevel'], 'critical', 10, 'warning', 8, 6],
           'circle-color': ['get', 'color'],
