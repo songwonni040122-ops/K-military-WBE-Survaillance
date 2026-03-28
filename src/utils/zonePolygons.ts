@@ -1,148 +1,159 @@
 import type { MilitaryBase } from '../types';
 
-interface ZoneFeature {
-  type: 'Feature';
-  properties: {
-    baseId: string;
-    zoneId: string;
-    color: string;
-    zoneName: string;
-  };
-  geometry: {
-    type: 'Polygon';
-    coordinates: number[][][];
-  };
+/**
+ * Clip polygon to vertical strip [leftLng, rightLng] using Sutherland-Hodgman.
+ */
+function clipToStrip(polygon: number[][], leftLng: number, rightLng: number): number[][] {
+  let out = clipLeft(polygon, leftLng);
+  out = clipRight(out, rightLng);
+  return out;
+}
+
+function clipLeft(poly: number[][], xMin: number): number[][] {
+  if (poly.length === 0) return [];
+  const out: number[][] = [];
+  for (let i = 0; i < poly.length; i++) {
+    const cur = poly[i];
+    const prev = poly[(i + poly.length - 1) % poly.length];
+    if (cur[0] >= xMin) {
+      if (prev[0] < xMin) out.push(xIntersect(prev, cur, xMin));
+      out.push(cur);
+    } else if (prev[0] >= xMin) {
+      out.push(xIntersect(prev, cur, xMin));
+    }
+  }
+  return out;
+}
+
+function clipRight(poly: number[][], xMax: number): number[][] {
+  if (poly.length === 0) return [];
+  const out: number[][] = [];
+  for (let i = 0; i < poly.length; i++) {
+    const cur = poly[i];
+    const prev = poly[(i + poly.length - 1) % poly.length];
+    if (cur[0] <= xMax) {
+      if (prev[0] > xMax) out.push(xIntersect(prev, cur, xMax));
+      out.push(cur);
+    } else if (prev[0] <= xMax) {
+      out.push(xIntersect(prev, cur, xMax));
+    }
+  }
+  return out;
+}
+
+function xIntersect(a: number[], b: number[], x: number): number[] {
+  const t = (x - a[0]) / (b[0] - a[0]);
+  return [x, a[1] + t * (b[1] - a[1])];
 }
 
 /**
- * Split a base's boundary polygon into zone sub-polygons radiating from center.
- * Each zone gets an angular slice of the polygon.
+ * Generate staircase (right-angle zigzag) polyline for a zone border.
  */
-function splitBoundaryIntoZones(base: MilitaryBase): ZoneFeature[] {
-  const boundary = base.boundary; // [lat, lng][]
+function makeStaircaseBorder(
+  cutLng: number,
+  boundary: number[][],
+  jitter: number,
+  seed: number,
+): number[][] {
+  const intersections: number[] = [];
+  for (let i = 0; i < boundary.length; i++) {
+    const a = boundary[i];
+    const b = boundary[(i + 1) % boundary.length];
+    if ((a[0] <= cutLng && b[0] >= cutLng) || (a[0] >= cutLng && b[0] <= cutLng)) {
+      if (Math.abs(b[0] - a[0]) > 1e-12) {
+        const t = (cutLng - a[0]) / (b[0] - a[0]);
+        intersections.push(a[1] + t * (b[1] - a[1]));
+      }
+    }
+  }
+  if (intersections.length < 2) return [];
+
+  intersections.sort((a, b) => a - b);
+  const minLat = intersections[0];
+  const maxLat = intersections[intersections.length - 1];
+
+  const steps = 8;
+  const stepH = (maxLat - minLat) / steps;
+  const points: number[][] = [];
+  let s = Math.abs(seed * 12345) | 1;
+  const rand = () => { s = (s * 16807) % 2147483647; return (s - 1) / 2147483646; };
+
+  for (let i = 0; i <= steps; i++) {
+    const lat = minLat + i * stepH;
+    const offset = (i % 2 === 0 ? -1 : 1) * jitter * (0.4 + rand() * 0.6);
+    if (i > 0) {
+      points.push([cutLng + offset, minLat + (i - 1) * stepH]);
+    }
+    points.push([cutLng + offset, lat]);
+  }
+  return points;
+}
+
+function splitBoundaryIntoZones(base: MilitaryBase): GeoJSON.Feature[] {
+  const boundary = base.boundary;
   const zones = base.layout.zones;
   const zoneData = base.zones;
   const n = zones.length;
-  if (n === 0 || boundary.length < 3) return [];
 
-  // Centroid
-  let cLat = 0, cLng = 0;
-  for (const [lat, lng] of boundary) {
-    cLat += lat;
-    cLng += lng;
+  if (n <= 0 || boundary.length < 3) return [];
+
+  const poly = boundary.map(([lat, lng]) => [lng, lat]);
+
+  if (n === 1) {
+    const coords = [...poly, poly[0]];
+    return [{
+      type: 'Feature',
+      properties: { baseId: base.id, zoneId: zones[0].id, color: zones[0].color, zoneName: zoneData[0]?.name || zones[0].id },
+      geometry: { type: 'Polygon', coordinates: [coords] },
+    }];
   }
-  cLat /= boundary.length;
-  cLng /= boundary.length;
 
-  // Compute angle of each boundary vertex from centroid
-  const verticesWithAngle = boundary.map(([lat, lng]) => ({
-    lat,
-    lng,
-    angle: Math.atan2(lat - cLat, lng - cLng),
-  }));
+  const lngs = poly.map((c) => c[0]);
+  const minLng = Math.min(...lngs);
+  const maxLng = Math.max(...lngs);
+  const lngSpan = maxLng - minLng;
 
-  // Sort by angle
-  verticesWithAngle.sort((a, b) => a.angle - b.angle);
+  const cutLngs: number[] = [];
+  for (let i = 1; i < n; i++) {
+    cutLngs.push(minLng + (lngSpan * i) / n);
+  }
 
-  // Divide the full 2π into n equal slices
-  const sliceAngle = (2 * Math.PI) / n;
-
-  // For each zone, find the boundary vertices that fall within its angular range,
-  // then create a polygon: center -> vertices in range -> center
-  const features: ZoneFeature[] = [];
+  const results: GeoJSON.Feature[] = [];
 
   for (let i = 0; i < n; i++) {
     const zone = zones[i];
     const zInfo = zoneData[i];
-    const angleStart = -Math.PI + i * sliceAngle;
-    const angleEnd = angleStart + sliceAngle;
+    const left = i === 0 ? minLng - 0.01 : cutLngs[i - 1];
+    const right = i === n - 1 ? maxLng + 0.01 : cutLngs[i];
 
-    // Get vertices in this angular slice
-    const sliceVertices: Array<{ lat: number; lng: number }> = [];
-    for (const v of verticesWithAngle) {
-      if (v.angle >= angleStart && v.angle < angleEnd) {
-        sliceVertices.push(v);
-      }
-    }
+    const clipped = clipToStrip(poly, left, right);
+    if (clipped.length < 3) continue;
 
-    // Also compute intersection points on the boundary at slice edges
-    const edgeStart = computeBoundaryIntersection(cLat, cLng, angleStart, boundary);
-    const edgeEnd = computeBoundaryIntersection(cLat, cLng, angleEnd, boundary);
+    results.push({
+      type: 'Feature',
+      properties: { baseId: base.id, zoneId: zone.id, color: zone.color, zoneName: zInfo?.name || zone.id },
+      geometry: { type: 'Polygon', coordinates: [[...clipped, clipped[0]]] },
+    });
+  }
 
-    // Build polygon: center -> edgeStart -> boundary vertices -> edgeEnd -> center
-    const coords: number[][] = [];
-    coords.push([cLng, cLat]); // center
-    if (edgeStart) coords.push([edgeStart.lng, edgeStart.lat]);
-    for (const v of sliceVertices) {
-      coords.push([v.lng, v.lat]);
-    }
-    if (edgeEnd) coords.push([edgeEnd.lng, edgeEnd.lat]);
-    coords.push([cLng, cLat]); // close
-
-    if (coords.length >= 4) { // need at least a triangle + closing
-      features.push({
+  // Staircase border lines
+  const jitter = lngSpan * 0.012;
+  for (let i = 0; i < cutLngs.length; i++) {
+    const lineCoords = makeStaircaseBorder(cutLngs[i], poly, jitter, i + base.location.lat * 1000);
+    if (lineCoords.length >= 2) {
+      results.push({
         type: 'Feature',
-        properties: {
-          baseId: base.id,
-          zoneId: zone.id,
-          color: zone.color,
-          zoneName: zInfo?.name || zone.id,
-        },
-        geometry: {
-          type: 'Polygon',
-          coordinates: [coords],
-        },
+        properties: { baseId: base.id, zoneId: `${base.id}-border-${i}`, color: '#aaaaaa', zoneName: '' },
+        geometry: { type: 'LineString', coordinates: lineCoords },
       });
     }
   }
 
-  return features;
-}
-
-/**
- * Find where a ray from (cLat, cLng) at given angle intersects the boundary polygon.
- */
-function computeBoundaryIntersection(
-  cLat: number, cLng: number, angle: number,
-  boundary: [number, number][],
-): { lat: number; lng: number } | null {
-  // Ray direction
-  const dLng = Math.cos(angle);
-  const dLat = Math.sin(angle);
-
-  let closest: { lat: number; lng: number; t: number } | null = null;
-
-  for (let i = 0; i < boundary.length; i++) {
-    const [lat1, lng1] = boundary[i];
-    const [lat2, lng2] = boundary[(i + 1) % boundary.length];
-
-    // Line segment: P = (lng1, lat1) + s * (lng2-lng1, lat2-lat1), s in [0,1]
-    // Ray: Q = (cLng, cLat) + t * (dLng, dLat), t > 0
-    const dx = lng2 - lng1;
-    const dy = lat2 - lat1;
-
-    const denom = dLng * dy - dLat * dx;
-    if (Math.abs(denom) < 1e-12) continue;
-
-    const t = ((lng1 - cLng) * dy - (lat1 - cLat) * dx) / denom;
-    const s = ((lng1 - cLng) * dLat - (lat1 - cLat) * dLng) / denom;
-
-    if (t > 0.001 && s >= 0 && s <= 1) {
-      if (!closest || t < closest.t) {
-        closest = {
-          lng: cLng + t * dLng,
-          lat: cLat + t * dLat,
-          t,
-        };
-      }
-    }
-  }
-
-  return closest;
+  return results;
 }
 
 export function generateZonePolygons(bases: MilitaryBase[]): GeoJSON.FeatureCollection {
-  const features: ZoneFeature[] = [];
+  const features: GeoJSON.Feature[] = [];
   for (const base of bases) {
     features.push(...splitBoundaryIntoZones(base));
   }

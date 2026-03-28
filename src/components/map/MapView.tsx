@@ -199,10 +199,9 @@ export default function MapView() {
         map.setPaintProperty(`boundary-fill-${base.id}`, 'fill-opacity', 0.35);
         // Show zones for this base
         hoveredBaseRef.current = base.id;
-        map.setFilter('zone-fills', ['==', ['get', 'baseId'], base.id]);
-        map.setFilter('zone-lines', ['==', ['get', 'baseId'], base.id]);
-        map.setPaintProperty('zone-fills', 'fill-opacity', 0.3);
-        map.setPaintProperty('zone-lines', 'line-opacity', 0.7);
+        map.setFilter('zone-fills', ['all', ['==', ['geometry-type'], 'Polygon'], ['==', ['get', 'baseId'], base.id]]);
+        map.setFilter('zone-outlines', ['all', ['==', ['geometry-type'], 'Polygon'], ['==', ['get', 'baseId'], base.id]]);
+        map.setFilter('zone-borders', ['all', ['==', ['geometry-type'], 'LineString'], ['==', ['get', 'baseId'], base.id]]);
       });
 
       map.on('mouseleave', `boundary-fill-${base.id}`, () => {
@@ -210,8 +209,9 @@ export default function MapView() {
         map.setPaintProperty(`boundary-fill-${base.id}`, 'fill-opacity', 0.18);
         // Hide zones
         hoveredBaseRef.current = null;
-        map.setFilter('zone-fills', ['==', ['get', 'baseId'], '']);
-        map.setFilter('zone-lines', ['==', ['get', 'baseId'], '']);
+        map.setFilter('zone-fills', ['all', ['==', ['geometry-type'], 'Polygon'], ['==', ['get', 'baseId'], '']]);
+        map.setFilter('zone-outlines', ['all', ['==', ['geometry-type'], 'Polygon'], ['==', ['get', 'baseId'], '']]);
+        map.setFilter('zone-borders', ['all', ['==', ['geometry-type'], 'LineString'], ['==', ['get', 'baseId'], '']]);
       });
 
       map.on('click', `boundary-fill-${base.id}`, () => {
@@ -312,24 +312,39 @@ export default function MapView() {
       const zonesGeoJSON = generateZonePolygons(allBases);
       map.addSource('zone-polygons', { type: 'geojson', data: zonesGeoJSON });
 
+      // Zone fill areas (Polygon features only)
       map.addLayer({
         id: 'zone-fills',
         type: 'fill',
         source: 'zone-polygons',
-        filter: ['==', ['get', 'baseId'], ''], // hidden by default
+        filter: ['all', ['==', ['geometry-type'], 'Polygon'], ['==', ['get', 'baseId'], '']],
         paint: { 'fill-color': ['get', 'color'], 'fill-opacity': 0.3 },
       });
 
+      // Zone polygon outlines
       map.addLayer({
-        id: 'zone-lines',
+        id: 'zone-outlines',
         type: 'line',
         source: 'zone-polygons',
-        filter: ['==', ['get', 'baseId'], ''], // hidden by default
+        filter: ['all', ['==', ['geometry-type'], 'Polygon'], ['==', ['get', 'baseId'], '']],
         paint: {
           'line-color': ['get', 'color'],
-          'line-width': 2,
-          'line-opacity': 0.7,
-          'line-dasharray': [4, 2],
+          'line-width': 1.5,
+          'line-opacity': 0.5,
+        },
+      });
+
+      // Staircase border lines (LineString features)
+      map.addLayer({
+        id: 'zone-borders',
+        type: 'line',
+        source: 'zone-polygons',
+        filter: ['all', ['==', ['geometry-type'], 'LineString'], ['==', ['get', 'baseId'], '']],
+        paint: {
+          'line-color': '#ffffff',
+          'line-width': 1.5,
+          'line-opacity': 0.4,
+          'line-dasharray': [3, 2],
         },
       });
     }
