@@ -1473,7 +1473,7 @@ export const bases: MilitaryBase[] = [
     location: { lat: 38.077288, lng: 127.292217 },
     region: '경기 포천시',
     personnelCount: 5300,
-    zoneCount: 3,
+    zoneCount: 2,
     characteristics: ['operational'],
     boundary: [
       [38.0743011, 127.2906344],
@@ -1616,7 +1616,6 @@ export const bases: MilitaryBase[] = [
     zones: [
       { id: 'b16-z1', baseId: 'base-16', name: 'A구역', confluencePoint: 'A구역 합류지점', currentAlertLevel: 'normal' },
       { id: 'b16-z2', baseId: 'base-16', name: 'B구역', confluencePoint: 'B구역 합류지점', currentAlertLevel: 'warning' },
-      { id: 'b16-z3', baseId: 'base-16', name: 'C구역', confluencePoint: 'C구역 합류지점', currentAlertLevel: 'normal' },
     ],
     layout: {
       grounds: { width: 30, depth: 25 },
@@ -1624,7 +1623,6 @@ export const bases: MilitaryBase[] = [
       zones: [
         { id: 'b16-z1', color: '#00e5ff', area: { x: -10, z: -10, width: 10, depth: 20 }, polygon: [] },
         { id: 'b16-z2', color: '#e040fb', area: { x: 0, z: -10, width: 10, depth: 20 }, polygon: [] },
-        { id: 'b16-z3', color: '#ffab00', area: { x: 10, z: -10, width: 10, depth: 20 }, polygon: [] },
       ],
       confluencePoints: [],
     },
@@ -1636,7 +1634,7 @@ export const bases: MilitaryBase[] = [
     location: { lat: 38.081392, lng: 127.284796 },
     region: '경기 포천시',
     personnelCount: 4700,
-    zoneCount: 3,
+    zoneCount: 2,
     characteristics: ['operational'],
     boundary: [
       [38.0797154, 127.2812888],
@@ -1781,7 +1779,6 @@ export const bases: MilitaryBase[] = [
     zones: [
       { id: 'b17-z1', baseId: 'base-17', name: 'A구역', confluencePoint: 'A구역 합류지점', currentAlertLevel: 'normal' },
       { id: 'b17-z2', baseId: 'base-17', name: 'B구역', confluencePoint: 'B구역 합류지점', currentAlertLevel: 'normal' },
-      { id: 'b17-z3', baseId: 'base-17', name: 'C구역', confluencePoint: 'C구역 합류지점', currentAlertLevel: 'normal' },
     ],
     layout: {
       grounds: { width: 30, depth: 25 },
@@ -1789,7 +1786,6 @@ export const bases: MilitaryBase[] = [
       zones: [
         { id: 'b17-z1', color: '#00e5ff', area: { x: -10, z: -10, width: 10, depth: 20 }, polygon: [] },
         { id: 'b17-z2', color: '#e040fb', area: { x: 0, z: -10, width: 10, depth: 20 }, polygon: [] },
-        { id: 'b17-z3', color: '#ffab00', area: { x: 10, z: -10, width: 10, depth: 20 }, polygon: [] },
       ],
       confluencePoints: [],
     },
@@ -1801,7 +1797,7 @@ export const bases: MilitaryBase[] = [
     location: { lat: 37.955415, lng: 127.297807 },
     region: '경기 포천시',
     personnelCount: 4700,
-    zoneCount: 3,
+    zoneCount: 2,
     characteristics: ['operational'],
     boundary: [
       [37.9558905, 127.2933617],
@@ -1880,7 +1876,6 @@ export const bases: MilitaryBase[] = [
     zones: [
       { id: 'b18-z1', baseId: 'base-18', name: 'A구역', confluencePoint: 'A구역 합류지점', currentAlertLevel: 'normal' },
       { id: 'b18-z2', baseId: 'base-18', name: 'B구역', confluencePoint: 'B구역 합류지점', currentAlertLevel: 'normal' },
-      { id: 'b18-z3', baseId: 'base-18', name: 'C구역', confluencePoint: 'C구역 합류지점', currentAlertLevel: 'normal' },
     ],
     layout: {
       grounds: { width: 30, depth: 25 },
@@ -1888,7 +1883,6 @@ export const bases: MilitaryBase[] = [
       zones: [
         { id: 'b18-z1', color: '#00e5ff', area: { x: -10, z: -10, width: 10, depth: 20 }, polygon: [] },
         { id: 'b18-z2', color: '#e040fb', area: { x: 0, z: -10, width: 10, depth: 20 }, polygon: [] },
-        { id: 'b18-z3', color: '#ffab00', area: { x: 10, z: -10, width: 10, depth: 20 }, polygon: [] },
       ],
       confluencePoints: [],
     },
@@ -1900,7 +1894,7 @@ export const bases: MilitaryBase[] = [
     location: { lat: 38.005780, lng: 127.360778 },
     region: '경기 포천시',
     personnelCount: 4600,
-    zoneCount: 3,
+    zoneCount: 2,
     characteristics: ['operational'],
     boundary: [
       [38.0063990, 127.3657607],
@@ -2017,7 +2011,6 @@ export const bases: MilitaryBase[] = [
     zones: [
       { id: 'b19-z1', baseId: 'base-19', name: 'A구역', confluencePoint: 'A구역 합류지점', currentAlertLevel: 'normal' },
       { id: 'b19-z2', baseId: 'base-19', name: 'B구역', confluencePoint: 'B구역 합류지점', currentAlertLevel: 'normal' },
-      { id: 'b19-z3', baseId: 'base-19', name: 'C구역', confluencePoint: 'C구역 합류지점', currentAlertLevel: 'normal' },
     ],
     layout: {
       grounds: { width: 30, depth: 25 },
@@ -2025,7 +2018,6 @@ export const bases: MilitaryBase[] = [
       zones: [
         { id: 'b19-z1', color: '#00e5ff', area: { x: -10, z: -10, width: 10, depth: 20 }, polygon: [] },
         { id: 'b19-z2', color: '#e040fb', area: { x: 0, z: -10, width: 10, depth: 20 }, polygon: [] },
-        { id: 'b19-z3', color: '#ffab00', area: { x: 10, z: -10, width: 10, depth: 20 }, polygon: [] },
       ],
       confluencePoints: [],
     },
@@ -2037,7 +2029,7 @@ export const bases: MilitaryBase[] = [
     location: { lat: 38.015050, lng: 127.326463 },
     region: '경기 포천시',
     personnelCount: 4400,
-    zoneCount: 3,
+    zoneCount: 2,
     characteristics: ['operational'],
     boundary: [
       [38.0174033, 127.3235067],
@@ -2067,7 +2059,6 @@ export const bases: MilitaryBase[] = [
     zones: [
       { id: 'b20-z1', baseId: 'base-20', name: 'A구역', confluencePoint: 'A구역 합류지점', currentAlertLevel: 'normal' },
       { id: 'b20-z2', baseId: 'base-20', name: 'B구역', confluencePoint: 'B구역 합류지점', currentAlertLevel: 'normal' },
-      { id: 'b20-z3', baseId: 'base-20', name: 'C구역', confluencePoint: 'C구역 합류지점', currentAlertLevel: 'normal' },
     ],
     layout: {
       grounds: { width: 30, depth: 25 },
@@ -2075,7 +2066,6 @@ export const bases: MilitaryBase[] = [
       zones: [
         { id: 'b20-z1', color: '#00e5ff', area: { x: -10, z: -10, width: 10, depth: 20 }, polygon: [] },
         { id: 'b20-z2', color: '#e040fb', area: { x: 0, z: -10, width: 10, depth: 20 }, polygon: [] },
-        { id: 'b20-z3', color: '#ffab00', area: { x: 10, z: -10, width: 10, depth: 20 }, polygon: [] },
       ],
       confluencePoints: [],
     },
@@ -2087,7 +2077,7 @@ export const bases: MilitaryBase[] = [
     location: { lat: 38.056625, lng: 127.266261 },
     region: '경기 포천시',
     personnelCount: 4300,
-    zoneCount: 3,
+    zoneCount: 2,
     characteristics: ['operational'],
     boundary: [
       [38.0582950, 127.2674021],
@@ -2151,7 +2141,6 @@ export const bases: MilitaryBase[] = [
     zones: [
       { id: 'b21-z1', baseId: 'base-21', name: 'A구역', confluencePoint: 'A구역 합류지점', currentAlertLevel: 'normal' },
       { id: 'b21-z2', baseId: 'base-21', name: 'B구역', confluencePoint: 'B구역 합류지점', currentAlertLevel: 'warning' },
-      { id: 'b21-z3', baseId: 'base-21', name: 'C구역', confluencePoint: 'C구역 합류지점', currentAlertLevel: 'normal' },
     ],
     layout: {
       grounds: { width: 30, depth: 25 },
@@ -2159,7 +2148,6 @@ export const bases: MilitaryBase[] = [
       zones: [
         { id: 'b21-z1', color: '#00e5ff', area: { x: -10, z: -10, width: 10, depth: 20 }, polygon: [] },
         { id: 'b21-z2', color: '#e040fb', area: { x: 0, z: -10, width: 10, depth: 20 }, polygon: [] },
-        { id: 'b21-z3', color: '#ffab00', area: { x: 10, z: -10, width: 10, depth: 20 }, polygon: [] },
       ],
       confluencePoints: [],
     },
@@ -2171,7 +2159,7 @@ export const bases: MilitaryBase[] = [
     location: { lat: 37.987803, lng: 127.357723 },
     region: '경기 포천시',
     personnelCount: 3800,
-    zoneCount: 3,
+    zoneCount: 2,
     characteristics: ['operational'],
     boundary: [
       [37.9916784, 127.3557102],
@@ -2261,7 +2249,6 @@ export const bases: MilitaryBase[] = [
     zones: [
       { id: 'b22-z1', baseId: 'base-22', name: 'A구역', confluencePoint: 'A구역 합류지점', currentAlertLevel: 'caution' },
       { id: 'b22-z2', baseId: 'base-22', name: 'B구역', confluencePoint: 'B구역 합류지점', currentAlertLevel: 'normal' },
-      { id: 'b22-z3', baseId: 'base-22', name: 'C구역', confluencePoint: 'C구역 합류지점', currentAlertLevel: 'normal' },
     ],
     layout: {
       grounds: { width: 30, depth: 25 },
@@ -2269,7 +2256,6 @@ export const bases: MilitaryBase[] = [
       zones: [
         { id: 'b22-z1', color: '#00e5ff', area: { x: -10, z: -10, width: 10, depth: 20 }, polygon: [] },
         { id: 'b22-z2', color: '#e040fb', area: { x: 0, z: -10, width: 10, depth: 20 }, polygon: [] },
-        { id: 'b22-z3', color: '#ffab00', area: { x: 10, z: -10, width: 10, depth: 20 }, polygon: [] },
       ],
       confluencePoints: [],
     },
@@ -2281,7 +2267,7 @@ export const bases: MilitaryBase[] = [
     location: { lat: 38.115776, lng: 127.300061 },
     region: '경기 포천시',
     personnelCount: 3300,
-    zoneCount: 3,
+    zoneCount: 1,
     characteristics: ['operational'],
     boundary: [
       [38.1162934, 127.2972396],
@@ -2367,16 +2353,12 @@ export const bases: MilitaryBase[] = [
     ],
     zones: [
       { id: 'b23-z1', baseId: 'base-23', name: 'A구역', confluencePoint: 'A구역 합류지점', currentAlertLevel: 'normal' },
-      { id: 'b23-z2', baseId: 'base-23', name: 'B구역', confluencePoint: 'B구역 합류지점', currentAlertLevel: 'normal' },
-      { id: 'b23-z3', baseId: 'base-23', name: 'C구역', confluencePoint: 'C구역 합류지점', currentAlertLevel: 'critical' },
     ],
     layout: {
       grounds: { width: 30, depth: 25 },
       buildings: [],
       zones: [
         { id: 'b23-z1', color: '#00e5ff', area: { x: -10, z: -10, width: 10, depth: 20 }, polygon: [] },
-        { id: 'b23-z2', color: '#e040fb', area: { x: 0, z: -10, width: 10, depth: 20 }, polygon: [] },
-        { id: 'b23-z3', color: '#ffab00', area: { x: 10, z: -10, width: 10, depth: 20 }, polygon: [] },
       ],
       confluencePoints: [],
     },
@@ -2388,7 +2370,7 @@ export const bases: MilitaryBase[] = [
     location: { lat: 37.790502, lng: 127.216286 },
     region: '경기 포천시',
     personnelCount: 3100,
-    zoneCount: 3,
+    zoneCount: 1,
     characteristics: ['operational'],
     boundary: [
       [37.7914433, 127.2170177],
@@ -2431,16 +2413,12 @@ export const bases: MilitaryBase[] = [
     ],
     zones: [
       { id: 'b24-z1', baseId: 'base-24', name: 'A구역', confluencePoint: 'A구역 합류지점', currentAlertLevel: 'normal' },
-      { id: 'b24-z2', baseId: 'base-24', name: 'B구역', confluencePoint: 'B구역 합류지점', currentAlertLevel: 'normal' },
-      { id: 'b24-z3', baseId: 'base-24', name: 'C구역', confluencePoint: 'C구역 합류지점', currentAlertLevel: 'normal' },
     ],
     layout: {
       grounds: { width: 30, depth: 25 },
       buildings: [],
       zones: [
         { id: 'b24-z1', color: '#00e5ff', area: { x: -10, z: -10, width: 10, depth: 20 }, polygon: [] },
-        { id: 'b24-z2', color: '#e040fb', area: { x: 0, z: -10, width: 10, depth: 20 }, polygon: [] },
-        { id: 'b24-z3', color: '#ffab00', area: { x: 10, z: -10, width: 10, depth: 20 }, polygon: [] },
       ],
       confluencePoints: [],
     },
@@ -2452,7 +2430,7 @@ export const bases: MilitaryBase[] = [
     location: { lat: 37.934711, lng: 127.189387 },
     region: '경기 포천시',
     personnelCount: 3100,
-    zoneCount: 3,
+    zoneCount: 1,
     characteristics: ['operational'],
     boundary: [
       [37.9377105, 127.1907977],
@@ -2516,16 +2494,12 @@ export const bases: MilitaryBase[] = [
     ],
     zones: [
       { id: 'b25-z1', baseId: 'base-25', name: 'A구역', confluencePoint: 'A구역 합류지점', currentAlertLevel: 'normal' },
-      { id: 'b25-z2', baseId: 'base-25', name: 'B구역', confluencePoint: 'B구역 합류지점', currentAlertLevel: 'normal' },
-      { id: 'b25-z3', baseId: 'base-25', name: 'C구역', confluencePoint: 'C구역 합류지점', currentAlertLevel: 'normal' },
     ],
     layout: {
       grounds: { width: 30, depth: 25 },
       buildings: [],
       zones: [
         { id: 'b25-z1', color: '#00e5ff', area: { x: -10, z: -10, width: 10, depth: 20 }, polygon: [] },
-        { id: 'b25-z2', color: '#e040fb', area: { x: 0, z: -10, width: 10, depth: 20 }, polygon: [] },
-        { id: 'b25-z3', color: '#ffab00', area: { x: 10, z: -10, width: 10, depth: 20 }, polygon: [] },
       ],
       confluencePoints: [],
     },
@@ -2537,7 +2511,7 @@ export const bases: MilitaryBase[] = [
     location: { lat: 38.021274, lng: 127.149195 },
     region: '경기 포천시',
     personnelCount: 3000,
-    zoneCount: 3,
+    zoneCount: 1,
     characteristics: ['operational'],
     boundary: [
       [38.0220359, 127.1508626],
@@ -2564,16 +2538,12 @@ export const bases: MilitaryBase[] = [
     ],
     zones: [
       { id: 'b26-z1', baseId: 'base-26', name: 'A구역', confluencePoint: 'A구역 합류지점', currentAlertLevel: 'normal' },
-      { id: 'b26-z2', baseId: 'base-26', name: 'B구역', confluencePoint: 'B구역 합류지점', currentAlertLevel: 'warning' },
-      { id: 'b26-z3', baseId: 'base-26', name: 'C구역', confluencePoint: 'C구역 합류지점', currentAlertLevel: 'normal' },
     ],
     layout: {
       grounds: { width: 30, depth: 25 },
       buildings: [],
       zones: [
         { id: 'b26-z1', color: '#00e5ff', area: { x: -10, z: -10, width: 10, depth: 20 }, polygon: [] },
-        { id: 'b26-z2', color: '#e040fb', area: { x: 0, z: -10, width: 10, depth: 20 }, polygon: [] },
-        { id: 'b26-z3', color: '#ffab00', area: { x: 10, z: -10, width: 10, depth: 20 }, polygon: [] },
       ],
       confluencePoints: [],
     },
@@ -2585,7 +2555,7 @@ export const bases: MilitaryBase[] = [
     location: { lat: 37.942944, lng: 127.283391 },
     region: '경기 포천시',
     personnelCount: 2800,
-    zoneCount: 3,
+    zoneCount: 1,
     characteristics: ['operational'],
     boundary: [
       [37.9428560, 127.2855090],
@@ -2636,16 +2606,12 @@ export const bases: MilitaryBase[] = [
     ],
     zones: [
       { id: 'b27-z1', baseId: 'base-27', name: 'A구역', confluencePoint: 'A구역 합류지점', currentAlertLevel: 'normal' },
-      { id: 'b27-z2', baseId: 'base-27', name: 'B구역', confluencePoint: 'B구역 합류지점', currentAlertLevel: 'normal' },
-      { id: 'b27-z3', baseId: 'base-27', name: 'C구역', confluencePoint: 'C구역 합류지점', currentAlertLevel: 'normal' },
     ],
     layout: {
       grounds: { width: 30, depth: 25 },
       buildings: [],
       zones: [
         { id: 'b27-z1', color: '#00e5ff', area: { x: -10, z: -10, width: 10, depth: 20 }, polygon: [] },
-        { id: 'b27-z2', color: '#e040fb', area: { x: 0, z: -10, width: 10, depth: 20 }, polygon: [] },
-        { id: 'b27-z3', color: '#ffab00', area: { x: 10, z: -10, width: 10, depth: 20 }, polygon: [] },
       ],
       confluencePoints: [],
     },
@@ -2657,7 +2623,7 @@ export const bases: MilitaryBase[] = [
     location: { lat: 37.874395, lng: 127.179735 },
     region: '경기 포천시',
     personnelCount: 2700,
-    zoneCount: 3,
+    zoneCount: 1,
     characteristics: ['operational'],
     boundary: [
       [37.8752487, 127.1763869],
@@ -2692,16 +2658,12 @@ export const bases: MilitaryBase[] = [
     ],
     zones: [
       { id: 'b28-z1', baseId: 'base-28', name: 'A구역', confluencePoint: 'A구역 합류지점', currentAlertLevel: 'normal' },
-      { id: 'b28-z2', baseId: 'base-28', name: 'B구역', confluencePoint: 'B구역 합류지점', currentAlertLevel: 'normal' },
-      { id: 'b28-z3', baseId: 'base-28', name: 'C구역', confluencePoint: 'C구역 합류지점', currentAlertLevel: 'normal' },
     ],
     layout: {
       grounds: { width: 30, depth: 25 },
       buildings: [],
       zones: [
         { id: 'b28-z1', color: '#00e5ff', area: { x: -10, z: -10, width: 10, depth: 20 }, polygon: [] },
-        { id: 'b28-z2', color: '#e040fb', area: { x: 0, z: -10, width: 10, depth: 20 }, polygon: [] },
-        { id: 'b28-z3', color: '#ffab00', area: { x: 10, z: -10, width: 10, depth: 20 }, polygon: [] },
       ],
       confluencePoints: [],
     },
@@ -2713,7 +2675,7 @@ export const bases: MilitaryBase[] = [
     location: { lat: 38.026012, lng: 127.366748 },
     region: '경기 포천시',
     personnelCount: 2600,
-    zoneCount: 3,
+    zoneCount: 1,
     characteristics: ['operational'],
     boundary: [
       [38.0242571, 127.3655907],
@@ -2761,16 +2723,12 @@ export const bases: MilitaryBase[] = [
     ],
     zones: [
       { id: 'b29-z1', baseId: 'base-29', name: 'A구역', confluencePoint: 'A구역 합류지점', currentAlertLevel: 'caution' },
-      { id: 'b29-z2', baseId: 'base-29', name: 'B구역', confluencePoint: 'B구역 합류지점', currentAlertLevel: 'normal' },
-      { id: 'b29-z3', baseId: 'base-29', name: 'C구역', confluencePoint: 'C구역 합류지점', currentAlertLevel: 'normal' },
     ],
     layout: {
       grounds: { width: 30, depth: 25 },
       buildings: [],
       zones: [
         { id: 'b29-z1', color: '#00e5ff', area: { x: -10, z: -10, width: 10, depth: 20 }, polygon: [] },
-        { id: 'b29-z2', color: '#e040fb', area: { x: 0, z: -10, width: 10, depth: 20 }, polygon: [] },
-        { id: 'b29-z3', color: '#ffab00', area: { x: 10, z: -10, width: 10, depth: 20 }, polygon: [] },
       ],
       confluencePoints: [],
     },
@@ -2782,7 +2740,7 @@ export const bases: MilitaryBase[] = [
     location: { lat: 37.940293, lng: 127.190055 },
     region: '경기 포천시',
     personnelCount: 2600,
-    zoneCount: 3,
+    zoneCount: 1,
     characteristics: ['operational'],
     boundary: [
       [37.9377105, 127.1907977],
@@ -2813,16 +2771,12 @@ export const bases: MilitaryBase[] = [
     ],
     zones: [
       { id: 'b30-z1', baseId: 'base-30', name: 'A구역', confluencePoint: 'A구역 합류지점', currentAlertLevel: 'normal' },
-      { id: 'b30-z2', baseId: 'base-30', name: 'B구역', confluencePoint: 'B구역 합류지점', currentAlertLevel: 'normal' },
-      { id: 'b30-z3', baseId: 'base-30', name: 'C구역', confluencePoint: 'C구역 합류지점', currentAlertLevel: 'normal' },
     ],
     layout: {
       grounds: { width: 30, depth: 25 },
       buildings: [],
       zones: [
         { id: 'b30-z1', color: '#00e5ff', area: { x: -10, z: -10, width: 10, depth: 20 }, polygon: [] },
-        { id: 'b30-z2', color: '#e040fb', area: { x: 0, z: -10, width: 10, depth: 20 }, polygon: [] },
-        { id: 'b30-z3', color: '#ffab00', area: { x: 10, z: -10, width: 10, depth: 20 }, polygon: [] },
       ],
       confluencePoints: [],
     },
@@ -2834,7 +2788,7 @@ export const bases: MilitaryBase[] = [
     location: { lat: 38.083174, lng: 127.268808 },
     region: '경기 포천시',
     personnelCount: 2400,
-    zoneCount: 3,
+    zoneCount: 1,
     characteristics: ['operational'],
     boundary: [
       [38.0860780, 127.2679666],
@@ -2863,16 +2817,12 @@ export const bases: MilitaryBase[] = [
     ],
     zones: [
       { id: 'b31-z1', baseId: 'base-31', name: 'A구역', confluencePoint: 'A구역 합류지점', currentAlertLevel: 'normal' },
-      { id: 'b31-z2', baseId: 'base-31', name: 'B구역', confluencePoint: 'B구역 합류지점', currentAlertLevel: 'warning' },
-      { id: 'b31-z3', baseId: 'base-31', name: 'C구역', confluencePoint: 'C구역 합류지점', currentAlertLevel: 'normal' },
     ],
     layout: {
       grounds: { width: 30, depth: 25 },
       buildings: [],
       zones: [
         { id: 'b31-z1', color: '#00e5ff', area: { x: -10, z: -10, width: 10, depth: 20 }, polygon: [] },
-        { id: 'b31-z2', color: '#e040fb', area: { x: 0, z: -10, width: 10, depth: 20 }, polygon: [] },
-        { id: 'b31-z3', color: '#ffab00', area: { x: 10, z: -10, width: 10, depth: 20 }, polygon: [] },
       ],
       confluencePoints: [],
     },
@@ -2884,7 +2834,7 @@ export const bases: MilitaryBase[] = [
     location: { lat: 37.986507, lng: 127.323950 },
     region: '경기 포천시',
     personnelCount: 2300,
-    zoneCount: 3,
+    zoneCount: 1,
     characteristics: ['operational'],
     boundary: [
       [37.9884857, 127.3237986],
@@ -2917,16 +2867,12 @@ export const bases: MilitaryBase[] = [
     ],
     zones: [
       { id: 'b32-z1', baseId: 'base-32', name: 'A구역', confluencePoint: 'A구역 합류지점', currentAlertLevel: 'normal' },
-      { id: 'b32-z2', baseId: 'base-32', name: 'B구역', confluencePoint: 'B구역 합류지점', currentAlertLevel: 'normal' },
-      { id: 'b32-z3', baseId: 'base-32', name: 'C구역', confluencePoint: 'C구역 합류지점', currentAlertLevel: 'normal' },
     ],
     layout: {
       grounds: { width: 30, depth: 25 },
       buildings: [],
       zones: [
         { id: 'b32-z1', color: '#00e5ff', area: { x: -10, z: -10, width: 10, depth: 20 }, polygon: [] },
-        { id: 'b32-z2', color: '#e040fb', area: { x: 0, z: -10, width: 10, depth: 20 }, polygon: [] },
-        { id: 'b32-z3', color: '#ffab00', area: { x: 10, z: -10, width: 10, depth: 20 }, polygon: [] },
       ],
       confluencePoints: [],
     },
@@ -2938,7 +2884,7 @@ export const bases: MilitaryBase[] = [
     location: { lat: 37.846934, lng: 127.123932 },
     region: '경기 포천시',
     personnelCount: 2300,
-    zoneCount: 3,
+    zoneCount: 1,
     characteristics: ['operational'],
     boundary: [
       [37.8466772, 127.1256679],
@@ -2983,16 +2929,12 @@ export const bases: MilitaryBase[] = [
     ],
     zones: [
       { id: 'b33-z1', baseId: 'base-33', name: 'A구역', confluencePoint: 'A구역 합류지점', currentAlertLevel: 'normal' },
-      { id: 'b33-z2', baseId: 'base-33', name: 'B구역', confluencePoint: 'B구역 합류지점', currentAlertLevel: 'normal' },
-      { id: 'b33-z3', baseId: 'base-33', name: 'C구역', confluencePoint: 'C구역 합류지점', currentAlertLevel: 'normal' },
     ],
     layout: {
       grounds: { width: 30, depth: 25 },
       buildings: [],
       zones: [
         { id: 'b33-z1', color: '#00e5ff', area: { x: -10, z: -10, width: 10, depth: 20 }, polygon: [] },
-        { id: 'b33-z2', color: '#e040fb', area: { x: 0, z: -10, width: 10, depth: 20 }, polygon: [] },
-        { id: 'b33-z3', color: '#ffab00', area: { x: 10, z: -10, width: 10, depth: 20 }, polygon: [] },
       ],
       confluencePoints: [],
     },
@@ -3004,7 +2946,7 @@ export const bases: MilitaryBase[] = [
     location: { lat: 37.930135, lng: 127.189643 },
     region: '경기 포천시',
     personnelCount: 2200,
-    zoneCount: 3,
+    zoneCount: 1,
     characteristics: ['operational'],
     boundary: [
       [37.9299719, 127.1913108],
@@ -3050,16 +2992,12 @@ export const bases: MilitaryBase[] = [
     ],
     zones: [
       { id: 'b34-z1', baseId: 'base-34', name: 'A구역', confluencePoint: 'A구역 합류지점', currentAlertLevel: 'normal' },
-      { id: 'b34-z2', baseId: 'base-34', name: 'B구역', confluencePoint: 'B구역 합류지점', currentAlertLevel: 'normal' },
-      { id: 'b34-z3', baseId: 'base-34', name: 'C구역', confluencePoint: 'C구역 합류지점', currentAlertLevel: 'critical' },
     ],
     layout: {
       grounds: { width: 30, depth: 25 },
       buildings: [],
       zones: [
         { id: 'b34-z1', color: '#00e5ff', area: { x: -10, z: -10, width: 10, depth: 20 }, polygon: [] },
-        { id: 'b34-z2', color: '#e040fb', area: { x: 0, z: -10, width: 10, depth: 20 }, polygon: [] },
-        { id: 'b34-z3', color: '#ffab00', area: { x: 10, z: -10, width: 10, depth: 20 }, polygon: [] },
       ],
       confluencePoints: [],
     },
@@ -3071,7 +3009,7 @@ export const bases: MilitaryBase[] = [
     location: { lat: 38.009266, lng: 127.332424 },
     region: '경기 포천시',
     personnelCount: 1800,
-    zoneCount: 3,
+    zoneCount: 1,
     characteristics: ['operational'],
     boundary: [
       [38.0110525, 127.3316238],
@@ -3088,16 +3026,12 @@ export const bases: MilitaryBase[] = [
     ],
     zones: [
       { id: 'b35-z1', baseId: 'base-35', name: 'A구역', confluencePoint: 'A구역 합류지점', currentAlertLevel: 'normal' },
-      { id: 'b35-z2', baseId: 'base-35', name: 'B구역', confluencePoint: 'B구역 합류지점', currentAlertLevel: 'normal' },
-      { id: 'b35-z3', baseId: 'base-35', name: 'C구역', confluencePoint: 'C구역 합류지점', currentAlertLevel: 'normal' },
     ],
     layout: {
       grounds: { width: 30, depth: 25 },
       buildings: [],
       zones: [
         { id: 'b35-z1', color: '#00e5ff', area: { x: -10, z: -10, width: 10, depth: 20 }, polygon: [] },
-        { id: 'b35-z2', color: '#e040fb', area: { x: 0, z: -10, width: 10, depth: 20 }, polygon: [] },
-        { id: 'b35-z3', color: '#ffab00', area: { x: 10, z: -10, width: 10, depth: 20 }, polygon: [] },
       ],
       confluencePoints: [],
     },
@@ -3109,7 +3043,7 @@ export const bases: MilitaryBase[] = [
     location: { lat: 38.004051, lng: 127.327425 },
     region: '경기 포천시',
     personnelCount: 1800,
-    zoneCount: 3,
+    zoneCount: 1,
     characteristics: ['operational'],
     boundary: [
       [38.0052465, 127.3261588],
@@ -3119,16 +3053,12 @@ export const bases: MilitaryBase[] = [
     ],
     zones: [
       { id: 'b36-z1', baseId: 'base-36', name: 'A구역', confluencePoint: 'A구역 합류지점', currentAlertLevel: 'caution' },
-      { id: 'b36-z2', baseId: 'base-36', name: 'B구역', confluencePoint: 'B구역 합류지점', currentAlertLevel: 'warning' },
-      { id: 'b36-z3', baseId: 'base-36', name: 'C구역', confluencePoint: 'C구역 합류지점', currentAlertLevel: 'normal' },
     ],
     layout: {
       grounds: { width: 30, depth: 25 },
       buildings: [],
       zones: [
         { id: 'b36-z1', color: '#00e5ff', area: { x: -10, z: -10, width: 10, depth: 20 }, polygon: [] },
-        { id: 'b36-z2', color: '#e040fb', area: { x: 0, z: -10, width: 10, depth: 20 }, polygon: [] },
-        { id: 'b36-z3', color: '#ffab00', area: { x: 10, z: -10, width: 10, depth: 20 }, polygon: [] },
       ],
       confluencePoints: [],
     },
@@ -3140,7 +3070,7 @@ export const bases: MilitaryBase[] = [
     location: { lat: 38.028845, lng: 127.140840 },
     region: '경기 포천시',
     personnelCount: 1800,
-    zoneCount: 3,
+    zoneCount: 1,
     characteristics: ['operational'],
     boundary: [
       [38.0319605, 127.1415245],
@@ -3177,16 +3107,12 @@ export const bases: MilitaryBase[] = [
     ],
     zones: [
       { id: 'b37-z1', baseId: 'base-37', name: 'A구역', confluencePoint: 'A구역 합류지점', currentAlertLevel: 'normal' },
-      { id: 'b37-z2', baseId: 'base-37', name: 'B구역', confluencePoint: 'B구역 합류지점', currentAlertLevel: 'normal' },
-      { id: 'b37-z3', baseId: 'base-37', name: 'C구역', confluencePoint: 'C구역 합류지점', currentAlertLevel: 'normal' },
     ],
     layout: {
       grounds: { width: 30, depth: 25 },
       buildings: [],
       zones: [
         { id: 'b37-z1', color: '#00e5ff', area: { x: -10, z: -10, width: 10, depth: 20 }, polygon: [] },
-        { id: 'b37-z2', color: '#e040fb', area: { x: 0, z: -10, width: 10, depth: 20 }, polygon: [] },
-        { id: 'b37-z3', color: '#ffab00', area: { x: 10, z: -10, width: 10, depth: 20 }, polygon: [] },
       ],
       confluencePoints: [],
     },
@@ -3198,7 +3124,7 @@ export const bases: MilitaryBase[] = [
     location: { lat: 37.938329, lng: 127.306011 },
     region: '경기 포천시',
     personnelCount: 1800,
-    zoneCount: 3,
+    zoneCount: 1,
     characteristics: ['operational'],
     boundary: [
       [37.9401687, 127.3068672],
@@ -3230,16 +3156,12 @@ export const bases: MilitaryBase[] = [
     ],
     zones: [
       { id: 'b38-z1', baseId: 'base-38', name: 'A구역', confluencePoint: 'A구역 합류지점', currentAlertLevel: 'normal' },
-      { id: 'b38-z2', baseId: 'base-38', name: 'B구역', confluencePoint: 'B구역 합류지점', currentAlertLevel: 'normal' },
-      { id: 'b38-z3', baseId: 'base-38', name: 'C구역', confluencePoint: 'C구역 합류지점', currentAlertLevel: 'normal' },
     ],
     layout: {
       grounds: { width: 30, depth: 25 },
       buildings: [],
       zones: [
         { id: 'b38-z1', color: '#00e5ff', area: { x: -10, z: -10, width: 10, depth: 20 }, polygon: [] },
-        { id: 'b38-z2', color: '#e040fb', area: { x: 0, z: -10, width: 10, depth: 20 }, polygon: [] },
-        { id: 'b38-z3', color: '#ffab00', area: { x: 10, z: -10, width: 10, depth: 20 }, polygon: [] },
       ],
       confluencePoints: [],
     },
@@ -3251,7 +3173,7 @@ export const bases: MilitaryBase[] = [
     location: { lat: 38.036410, lng: 127.377186 },
     region: '경기 포천시',
     personnelCount: 1800,
-    zoneCount: 3,
+    zoneCount: 1,
     characteristics: ['operational'],
     boundary: [
       [38.0377993, 127.3793357],
@@ -3281,16 +3203,12 @@ export const bases: MilitaryBase[] = [
     ],
     zones: [
       { id: 'b39-z1', baseId: 'base-39', name: 'A구역', confluencePoint: 'A구역 합류지점', currentAlertLevel: 'normal' },
-      { id: 'b39-z2', baseId: 'base-39', name: 'B구역', confluencePoint: 'B구역 합류지점', currentAlertLevel: 'normal' },
-      { id: 'b39-z3', baseId: 'base-39', name: 'C구역', confluencePoint: 'C구역 합류지점', currentAlertLevel: 'normal' },
     ],
     layout: {
       grounds: { width: 30, depth: 25 },
       buildings: [],
       zones: [
         { id: 'b39-z1', color: '#00e5ff', area: { x: -10, z: -10, width: 10, depth: 20 }, polygon: [] },
-        { id: 'b39-z2', color: '#e040fb', area: { x: 0, z: -10, width: 10, depth: 20 }, polygon: [] },
-        { id: 'b39-z3', color: '#ffab00', area: { x: 10, z: -10, width: 10, depth: 20 }, polygon: [] },
       ],
       confluencePoints: [],
     },
@@ -3302,7 +3220,7 @@ export const bases: MilitaryBase[] = [
     location: { lat: 38.004643, lng: 127.375333 },
     region: '경기 포천시',
     personnelCount: 1800,
-    zoneCount: 3,
+    zoneCount: 1,
     characteristics: ['operational'],
     boundary: [
       [38.0053570, 127.3729669],
@@ -3320,16 +3238,12 @@ export const bases: MilitaryBase[] = [
     ],
     zones: [
       { id: 'b40-z1', baseId: 'base-40', name: 'A구역', confluencePoint: 'A구역 합류지점', currentAlertLevel: 'normal' },
-      { id: 'b40-z2', baseId: 'base-40', name: 'B구역', confluencePoint: 'B구역 합류지점', currentAlertLevel: 'normal' },
-      { id: 'b40-z3', baseId: 'base-40', name: 'C구역', confluencePoint: 'C구역 합류지점', currentAlertLevel: 'normal' },
     ],
     layout: {
       grounds: { width: 30, depth: 25 },
       buildings: [],
       zones: [
         { id: 'b40-z1', color: '#00e5ff', area: { x: -10, z: -10, width: 10, depth: 20 }, polygon: [] },
-        { id: 'b40-z2', color: '#e040fb', area: { x: 0, z: -10, width: 10, depth: 20 }, polygon: [] },
-        { id: 'b40-z3', color: '#ffab00', area: { x: 10, z: -10, width: 10, depth: 20 }, polygon: [] },
       ],
       confluencePoints: [],
     },
@@ -3341,7 +3255,7 @@ export const bases: MilitaryBase[] = [
     location: { lat: 38.020666, lng: 127.357585 },
     region: '경기 포천시',
     personnelCount: 1700,
-    zoneCount: 3,
+    zoneCount: 1,
     characteristics: ['operational'],
     boundary: [
       [38.0192210, 127.3588521],
@@ -3355,16 +3269,12 @@ export const bases: MilitaryBase[] = [
     ],
     zones: [
       { id: 'b41-z1', baseId: 'base-41', name: 'A구역', confluencePoint: 'A구역 합류지점', currentAlertLevel: 'normal' },
-      { id: 'b41-z2', baseId: 'base-41', name: 'B구역', confluencePoint: 'B구역 합류지점', currentAlertLevel: 'warning' },
-      { id: 'b41-z3', baseId: 'base-41', name: 'C구역', confluencePoint: 'C구역 합류지점', currentAlertLevel: 'normal' },
     ],
     layout: {
       grounds: { width: 30, depth: 25 },
       buildings: [],
       zones: [
         { id: 'b41-z1', color: '#00e5ff', area: { x: -10, z: -10, width: 10, depth: 20 }, polygon: [] },
-        { id: 'b41-z2', color: '#e040fb', area: { x: 0, z: -10, width: 10, depth: 20 }, polygon: [] },
-        { id: 'b41-z3', color: '#ffab00', area: { x: 10, z: -10, width: 10, depth: 20 }, polygon: [] },
       ],
       confluencePoints: [],
     },
@@ -3376,7 +3286,7 @@ export const bases: MilitaryBase[] = [
     location: { lat: 38.028191, lng: 127.139276 },
     region: '경기 포천시',
     personnelCount: 1500,
-    zoneCount: 3,
+    zoneCount: 1,
     characteristics: ['operational'],
     boundary: [
       [38.0284618, 127.1389281],
@@ -3416,16 +3326,12 @@ export const bases: MilitaryBase[] = [
     ],
     zones: [
       { id: 'b42-z1', baseId: 'base-42', name: 'A구역', confluencePoint: 'A구역 합류지점', currentAlertLevel: 'normal' },
-      { id: 'b42-z2', baseId: 'base-42', name: 'B구역', confluencePoint: 'B구역 합류지점', currentAlertLevel: 'normal' },
-      { id: 'b42-z3', baseId: 'base-42', name: 'C구역', confluencePoint: 'C구역 합류지점', currentAlertLevel: 'normal' },
     ],
     layout: {
       grounds: { width: 30, depth: 25 },
       buildings: [],
       zones: [
         { id: 'b42-z1', color: '#00e5ff', area: { x: -10, z: -10, width: 10, depth: 20 }, polygon: [] },
-        { id: 'b42-z2', color: '#e040fb', area: { x: 0, z: -10, width: 10, depth: 20 }, polygon: [] },
-        { id: 'b42-z3', color: '#ffab00', area: { x: 10, z: -10, width: 10, depth: 20 }, polygon: [] },
       ],
       confluencePoints: [],
     },
@@ -3437,7 +3343,7 @@ export const bases: MilitaryBase[] = [
     location: { lat: 38.004942, lng: 127.332138 },
     region: '경기 포천시',
     personnelCount: 1500,
-    zoneCount: 3,
+    zoneCount: 1,
     characteristics: ['operational'],
     boundary: [
       [38.0056483, 127.3304478],
@@ -3456,16 +3362,12 @@ export const bases: MilitaryBase[] = [
     ],
     zones: [
       { id: 'b43-z1', baseId: 'base-43', name: 'A구역', confluencePoint: 'A구역 합류지점', currentAlertLevel: 'caution' },
-      { id: 'b43-z2', baseId: 'base-43', name: 'B구역', confluencePoint: 'B구역 합류지점', currentAlertLevel: 'normal' },
-      { id: 'b43-z3', baseId: 'base-43', name: 'C구역', confluencePoint: 'C구역 합류지점', currentAlertLevel: 'normal' },
     ],
     layout: {
       grounds: { width: 30, depth: 25 },
       buildings: [],
       zones: [
         { id: 'b43-z1', color: '#00e5ff', area: { x: -10, z: -10, width: 10, depth: 20 }, polygon: [] },
-        { id: 'b43-z2', color: '#e040fb', area: { x: 0, z: -10, width: 10, depth: 20 }, polygon: [] },
-        { id: 'b43-z3', color: '#ffab00', area: { x: 10, z: -10, width: 10, depth: 20 }, polygon: [] },
       ],
       confluencePoints: [],
     },
@@ -3477,7 +3379,7 @@ export const bases: MilitaryBase[] = [
     location: { lat: 37.916283, lng: 127.311457 },
     region: '경기 포천시',
     personnelCount: 1400,
-    zoneCount: 3,
+    zoneCount: 1,
     characteristics: ['operational'],
     boundary: [
       [37.9165820, 127.3103155],
@@ -3500,16 +3402,12 @@ export const bases: MilitaryBase[] = [
     ],
     zones: [
       { id: 'b44-z1', baseId: 'base-44', name: 'A구역', confluencePoint: 'A구역 합류지점', currentAlertLevel: 'normal' },
-      { id: 'b44-z2', baseId: 'base-44', name: 'B구역', confluencePoint: 'B구역 합류지점', currentAlertLevel: 'normal' },
-      { id: 'b44-z3', baseId: 'base-44', name: 'C구역', confluencePoint: 'C구역 합류지점', currentAlertLevel: 'normal' },
     ],
     layout: {
       grounds: { width: 30, depth: 25 },
       buildings: [],
       zones: [
         { id: 'b44-z1', color: '#00e5ff', area: { x: -10, z: -10, width: 10, depth: 20 }, polygon: [] },
-        { id: 'b44-z2', color: '#e040fb', area: { x: 0, z: -10, width: 10, depth: 20 }, polygon: [] },
-        { id: 'b44-z3', color: '#ffab00', area: { x: 10, z: -10, width: 10, depth: 20 }, polygon: [] },
       ],
       confluencePoints: [],
     },
@@ -3521,7 +3419,7 @@ export const bases: MilitaryBase[] = [
     location: { lat: 38.139519, lng: 127.233382 },
     region: '경기 포천시',
     personnelCount: 1300,
-    zoneCount: 3,
+    zoneCount: 1,
     characteristics: ['operational'],
     boundary: [
       [38.1412082, 127.2318807],
@@ -3550,16 +3448,12 @@ export const bases: MilitaryBase[] = [
     ],
     zones: [
       { id: 'b45-z1', baseId: 'base-45', name: 'A구역', confluencePoint: 'A구역 합류지점', currentAlertLevel: 'normal' },
-      { id: 'b45-z2', baseId: 'base-45', name: 'B구역', confluencePoint: 'B구역 합류지점', currentAlertLevel: 'normal' },
-      { id: 'b45-z3', baseId: 'base-45', name: 'C구역', confluencePoint: 'C구역 합류지점', currentAlertLevel: 'critical' },
     ],
     layout: {
       grounds: { width: 30, depth: 25 },
       buildings: [],
       zones: [
         { id: 'b45-z1', color: '#00e5ff', area: { x: -10, z: -10, width: 10, depth: 20 }, polygon: [] },
-        { id: 'b45-z2', color: '#e040fb', area: { x: 0, z: -10, width: 10, depth: 20 }, polygon: [] },
-        { id: 'b45-z3', color: '#ffab00', area: { x: 10, z: -10, width: 10, depth: 20 }, polygon: [] },
       ],
       confluencePoints: [],
     },
@@ -3571,7 +3465,7 @@ export const bases: MilitaryBase[] = [
     location: { lat: 38.004688, lng: 127.324303 },
     region: '경기 포천시',
     personnelCount: 1200,
-    zoneCount: 3,
+    zoneCount: 1,
     characteristics: ['operational'],
     boundary: [
       [38.0048269, 127.3228498],
@@ -3581,16 +3475,12 @@ export const bases: MilitaryBase[] = [
     ],
     zones: [
       { id: 'b46-z1', baseId: 'base-46', name: 'A구역', confluencePoint: 'A구역 합류지점', currentAlertLevel: 'normal' },
-      { id: 'b46-z2', baseId: 'base-46', name: 'B구역', confluencePoint: 'B구역 합류지점', currentAlertLevel: 'warning' },
-      { id: 'b46-z3', baseId: 'base-46', name: 'C구역', confluencePoint: 'C구역 합류지점', currentAlertLevel: 'normal' },
     ],
     layout: {
       grounds: { width: 30, depth: 25 },
       buildings: [],
       zones: [
         { id: 'b46-z1', color: '#00e5ff', area: { x: -10, z: -10, width: 10, depth: 20 }, polygon: [] },
-        { id: 'b46-z2', color: '#e040fb', area: { x: 0, z: -10, width: 10, depth: 20 }, polygon: [] },
-        { id: 'b46-z3', color: '#ffab00', area: { x: 10, z: -10, width: 10, depth: 20 }, polygon: [] },
       ],
       confluencePoints: [],
     },
@@ -3602,7 +3492,7 @@ export const bases: MilitaryBase[] = [
     location: { lat: 38.139776, lng: 127.217064 },
     region: '경기 포천시',
     personnelCount: 1100,
-    zoneCount: 3,
+    zoneCount: 1,
     characteristics: ['operational'],
     boundary: [
       [38.1416733, 127.2154879],
@@ -3632,16 +3522,12 @@ export const bases: MilitaryBase[] = [
     ],
     zones: [
       { id: 'b47-z1', baseId: 'base-47', name: 'A구역', confluencePoint: 'A구역 합류지점', currentAlertLevel: 'normal' },
-      { id: 'b47-z2', baseId: 'base-47', name: 'B구역', confluencePoint: 'B구역 합류지점', currentAlertLevel: 'normal' },
-      { id: 'b47-z3', baseId: 'base-47', name: 'C구역', confluencePoint: 'C구역 합류지점', currentAlertLevel: 'normal' },
     ],
     layout: {
       grounds: { width: 30, depth: 25 },
       buildings: [],
       zones: [
         { id: 'b47-z1', color: '#00e5ff', area: { x: -10, z: -10, width: 10, depth: 20 }, polygon: [] },
-        { id: 'b47-z2', color: '#e040fb', area: { x: 0, z: -10, width: 10, depth: 20 }, polygon: [] },
-        { id: 'b47-z3', color: '#ffab00', area: { x: 10, z: -10, width: 10, depth: 20 }, polygon: [] },
       ],
       confluencePoints: [],
     },
@@ -3653,7 +3539,7 @@ export const bases: MilitaryBase[] = [
     location: { lat: 38.084077, lng: 127.250561 },
     region: '경기 포천시',
     personnelCount: 900,
-    zoneCount: 3,
+    zoneCount: 1,
     characteristics: ['operational'],
     boundary: [
       [38.0850227, 127.2523837],
@@ -3668,16 +3554,12 @@ export const bases: MilitaryBase[] = [
     ],
     zones: [
       { id: 'b48-z1', baseId: 'base-48', name: 'A구역', confluencePoint: 'A구역 합류지점', currentAlertLevel: 'normal' },
-      { id: 'b48-z2', baseId: 'base-48', name: 'B구역', confluencePoint: 'B구역 합류지점', currentAlertLevel: 'normal' },
-      { id: 'b48-z3', baseId: 'base-48', name: 'C구역', confluencePoint: 'C구역 합류지점', currentAlertLevel: 'normal' },
     ],
     layout: {
       grounds: { width: 30, depth: 25 },
       buildings: [],
       zones: [
         { id: 'b48-z1', color: '#00e5ff', area: { x: -10, z: -10, width: 10, depth: 20 }, polygon: [] },
-        { id: 'b48-z2', color: '#e040fb', area: { x: 0, z: -10, width: 10, depth: 20 }, polygon: [] },
-        { id: 'b48-z3', color: '#ffab00', area: { x: 10, z: -10, width: 10, depth: 20 }, polygon: [] },
       ],
       confluencePoints: [],
     },
@@ -3689,7 +3571,7 @@ export const bases: MilitaryBase[] = [
     location: { lat: 38.018254, lng: 127.357389 },
     region: '경기 포천시',
     personnelCount: 800,
-    zoneCount: 3,
+    zoneCount: 1,
     characteristics: ['operational'],
     boundary: [
       [38.0173403, 127.3561346],
@@ -3701,16 +3583,12 @@ export const bases: MilitaryBase[] = [
     ],
     zones: [
       { id: 'b49-z1', baseId: 'base-49', name: 'A구역', confluencePoint: 'A구역 합류지점', currentAlertLevel: 'normal' },
-      { id: 'b49-z2', baseId: 'base-49', name: 'B구역', confluencePoint: 'B구역 합류지점', currentAlertLevel: 'normal' },
-      { id: 'b49-z3', baseId: 'base-49', name: 'C구역', confluencePoint: 'C구역 합류지점', currentAlertLevel: 'normal' },
     ],
     layout: {
       grounds: { width: 30, depth: 25 },
       buildings: [],
       zones: [
         { id: 'b49-z1', color: '#00e5ff', area: { x: -10, z: -10, width: 10, depth: 20 }, polygon: [] },
-        { id: 'b49-z2', color: '#e040fb', area: { x: 0, z: -10, width: 10, depth: 20 }, polygon: [] },
-        { id: 'b49-z3', color: '#ffab00', area: { x: 10, z: -10, width: 10, depth: 20 }, polygon: [] },
       ],
       confluencePoints: [],
     },
@@ -3722,7 +3600,7 @@ export const bases: MilitaryBase[] = [
     location: { lat: 38.028540, lng: 127.143714 },
     region: '경기 포천시',
     personnelCount: 700,
-    zoneCount: 3,
+    zoneCount: 1,
     characteristics: ['operational'],
     boundary: [
       [38.0279241, 127.1427469],
@@ -3732,16 +3610,12 @@ export const bases: MilitaryBase[] = [
     ],
     zones: [
       { id: 'b50-z1', baseId: 'base-50', name: 'A구역', confluencePoint: 'A구역 합류지점', currentAlertLevel: 'caution' },
-      { id: 'b50-z2', baseId: 'base-50', name: 'B구역', confluencePoint: 'B구역 합류지점', currentAlertLevel: 'normal' },
-      { id: 'b50-z3', baseId: 'base-50', name: 'C구역', confluencePoint: 'C구역 합류지점', currentAlertLevel: 'normal' },
     ],
     layout: {
       grounds: { width: 30, depth: 25 },
       buildings: [],
       zones: [
         { id: 'b50-z1', color: '#00e5ff', area: { x: -10, z: -10, width: 10, depth: 20 }, polygon: [] },
-        { id: 'b50-z2', color: '#e040fb', area: { x: 0, z: -10, width: 10, depth: 20 }, polygon: [] },
-        { id: 'b50-z3', color: '#ffab00', area: { x: 10, z: -10, width: 10, depth: 20 }, polygon: [] },
       ],
       confluencePoints: [],
     },
@@ -3753,7 +3627,7 @@ export const bases: MilitaryBase[] = [
     location: { lat: 37.988261, lng: 127.321556 },
     region: '경기 포천시',
     personnelCount: 700,
-    zoneCount: 3,
+    zoneCount: 1,
     characteristics: ['operational'],
     boundary: [
       [37.9880015, 127.3204216],
@@ -3781,16 +3655,12 @@ export const bases: MilitaryBase[] = [
     ],
     zones: [
       { id: 'b51-z1', baseId: 'base-51', name: 'A구역', confluencePoint: 'A구역 합류지점', currentAlertLevel: 'normal' },
-      { id: 'b51-z2', baseId: 'base-51', name: 'B구역', confluencePoint: 'B구역 합류지점', currentAlertLevel: 'warning' },
-      { id: 'b51-z3', baseId: 'base-51', name: 'C구역', confluencePoint: 'C구역 합류지점', currentAlertLevel: 'normal' },
     ],
     layout: {
       grounds: { width: 30, depth: 25 },
       buildings: [],
       zones: [
         { id: 'b51-z1', color: '#00e5ff', area: { x: -10, z: -10, width: 10, depth: 20 }, polygon: [] },
-        { id: 'b51-z2', color: '#e040fb', area: { x: 0, z: -10, width: 10, depth: 20 }, polygon: [] },
-        { id: 'b51-z3', color: '#ffab00', area: { x: 10, z: -10, width: 10, depth: 20 }, polygon: [] },
       ],
       confluencePoints: [],
     },
@@ -3802,7 +3672,7 @@ export const bases: MilitaryBase[] = [
     location: { lat: 38.017576, lng: 127.362106 },
     region: '경기 포천시',
     personnelCount: 700,
-    zoneCount: 3,
+    zoneCount: 1,
     characteristics: ['operational'],
     boundary: [
       [38.0169721, 127.3609254],
@@ -3815,16 +3685,12 @@ export const bases: MilitaryBase[] = [
     ],
     zones: [
       { id: 'b52-z1', baseId: 'base-52', name: 'A구역', confluencePoint: 'A구역 합류지점', currentAlertLevel: 'normal' },
-      { id: 'b52-z2', baseId: 'base-52', name: 'B구역', confluencePoint: 'B구역 합류지점', currentAlertLevel: 'normal' },
-      { id: 'b52-z3', baseId: 'base-52', name: 'C구역', confluencePoint: 'C구역 합류지점', currentAlertLevel: 'normal' },
     ],
     layout: {
       grounds: { width: 30, depth: 25 },
       buildings: [],
       zones: [
         { id: 'b52-z1', color: '#00e5ff', area: { x: -10, z: -10, width: 10, depth: 20 }, polygon: [] },
-        { id: 'b52-z2', color: '#e040fb', area: { x: 0, z: -10, width: 10, depth: 20 }, polygon: [] },
-        { id: 'b52-z3', color: '#ffab00', area: { x: 10, z: -10, width: 10, depth: 20 }, polygon: [] },
       ],
       confluencePoints: [],
     },
@@ -3836,7 +3702,7 @@ export const bases: MilitaryBase[] = [
     location: { lat: 37.946023, lng: 127.190670 },
     region: '경기 포천시',
     personnelCount: 600,
-    zoneCount: 3,
+    zoneCount: 1,
     characteristics: ['operational'],
     boundary: [
       [37.9435864, 127.1897518],
@@ -3853,16 +3719,12 @@ export const bases: MilitaryBase[] = [
     ],
     zones: [
       { id: 'b53-z1', baseId: 'base-53', name: 'A구역', confluencePoint: 'A구역 합류지점', currentAlertLevel: 'normal' },
-      { id: 'b53-z2', baseId: 'base-53', name: 'B구역', confluencePoint: 'B구역 합류지점', currentAlertLevel: 'normal' },
-      { id: 'b53-z3', baseId: 'base-53', name: 'C구역', confluencePoint: 'C구역 합류지점', currentAlertLevel: 'normal' },
     ],
     layout: {
       grounds: { width: 30, depth: 25 },
       buildings: [],
       zones: [
         { id: 'b53-z1', color: '#00e5ff', area: { x: -10, z: -10, width: 10, depth: 20 }, polygon: [] },
-        { id: 'b53-z2', color: '#e040fb', area: { x: 0, z: -10, width: 10, depth: 20 }, polygon: [] },
-        { id: 'b53-z3', color: '#ffab00', area: { x: 10, z: -10, width: 10, depth: 20 }, polygon: [] },
       ],
       confluencePoints: [],
     },
@@ -3874,7 +3736,7 @@ export const bases: MilitaryBase[] = [
     location: { lat: 38.128545, lng: 127.253774 },
     region: '경기 포천시',
     personnelCount: 600,
-    zoneCount: 3,
+    zoneCount: 1,
     characteristics: ['operational'],
     boundary: [
       [38.1299030, 127.2530748],
@@ -3900,16 +3762,12 @@ export const bases: MilitaryBase[] = [
     ],
     zones: [
       { id: 'b54-z1', baseId: 'base-54', name: 'A구역', confluencePoint: 'A구역 합류지점', currentAlertLevel: 'normal' },
-      { id: 'b54-z2', baseId: 'base-54', name: 'B구역', confluencePoint: 'B구역 합류지점', currentAlertLevel: 'normal' },
-      { id: 'b54-z3', baseId: 'base-54', name: 'C구역', confluencePoint: 'C구역 합류지점', currentAlertLevel: 'normal' },
     ],
     layout: {
       grounds: { width: 30, depth: 25 },
       buildings: [],
       zones: [
         { id: 'b54-z1', color: '#00e5ff', area: { x: -10, z: -10, width: 10, depth: 20 }, polygon: [] },
-        { id: 'b54-z2', color: '#e040fb', area: { x: 0, z: -10, width: 10, depth: 20 }, polygon: [] },
-        { id: 'b54-z3', color: '#ffab00', area: { x: 10, z: -10, width: 10, depth: 20 }, polygon: [] },
       ],
       confluencePoints: [],
     },
@@ -3921,7 +3779,7 @@ export const bases: MilitaryBase[] = [
     location: { lat: 38.136119, lng: 127.214438 },
     region: '경기 포천시',
     personnelCount: 200,
-    zoneCount: 3,
+    zoneCount: 1,
     characteristics: ['operational'],
     boundary: [
       [38.1366009, 127.2134833],
@@ -3936,16 +3794,12 @@ export const bases: MilitaryBase[] = [
     ],
     zones: [
       { id: 'b55-z1', baseId: 'base-55', name: 'A구역', confluencePoint: 'A구역 합류지점', currentAlertLevel: 'normal' },
-      { id: 'b55-z2', baseId: 'base-55', name: 'B구역', confluencePoint: 'B구역 합류지점', currentAlertLevel: 'normal' },
-      { id: 'b55-z3', baseId: 'base-55', name: 'C구역', confluencePoint: 'C구역 합류지점', currentAlertLevel: 'normal' },
     ],
     layout: {
       grounds: { width: 30, depth: 25 },
       buildings: [],
       zones: [
         { id: 'b55-z1', color: '#00e5ff', area: { x: -10, z: -10, width: 10, depth: 20 }, polygon: [] },
-        { id: 'b55-z2', color: '#e040fb', area: { x: 0, z: -10, width: 10, depth: 20 }, polygon: [] },
-        { id: 'b55-z3', color: '#ffab00', area: { x: 10, z: -10, width: 10, depth: 20 }, polygon: [] },
       ],
       confluencePoints: [],
     },
@@ -3957,7 +3811,7 @@ export const bases: MilitaryBase[] = [
     location: { lat: 38.029599, lng: 127.143665 },
     region: '경기 포천시',
     personnelCount: 200,
-    zoneCount: 3,
+    zoneCount: 1,
     characteristics: ['operational'],
     boundary: [
       [38.0297913, 127.1427534],
@@ -3968,16 +3822,12 @@ export const bases: MilitaryBase[] = [
     ],
     zones: [
       { id: 'b56-z1', baseId: 'base-56', name: 'A구역', confluencePoint: 'A구역 합류지점', currentAlertLevel: 'normal' },
-      { id: 'b56-z2', baseId: 'base-56', name: 'B구역', confluencePoint: 'B구역 합류지점', currentAlertLevel: 'warning' },
-      { id: 'b56-z3', baseId: 'base-56', name: 'C구역', confluencePoint: 'C구역 합류지점', currentAlertLevel: 'critical' },
     ],
     layout: {
       grounds: { width: 30, depth: 25 },
       buildings: [],
       zones: [
         { id: 'b56-z1', color: '#00e5ff', area: { x: -10, z: -10, width: 10, depth: 20 }, polygon: [] },
-        { id: 'b56-z2', color: '#e040fb', area: { x: 0, z: -10, width: 10, depth: 20 }, polygon: [] },
-        { id: 'b56-z3', color: '#ffab00', area: { x: 10, z: -10, width: 10, depth: 20 }, polygon: [] },
       ],
       confluencePoints: [],
     },
@@ -3989,7 +3839,7 @@ export const bases: MilitaryBase[] = [
     location: { lat: 38.050026, lng: 127.126286 },
     region: '경기 포천시',
     personnelCount: 200,
-    zoneCount: 3,
+    zoneCount: 1,
     characteristics: ['operational'],
     boundary: [
       [38.0502911, 127.1262538],
@@ -3999,16 +3849,12 @@ export const bases: MilitaryBase[] = [
     ],
     zones: [
       { id: 'b57-z1', baseId: 'base-57', name: 'A구역', confluencePoint: 'A구역 합류지점', currentAlertLevel: 'caution' },
-      { id: 'b57-z2', baseId: 'base-57', name: 'B구역', confluencePoint: 'B구역 합류지점', currentAlertLevel: 'normal' },
-      { id: 'b57-z3', baseId: 'base-57', name: 'C구역', confluencePoint: 'C구역 합류지점', currentAlertLevel: 'normal' },
     ],
     layout: {
       grounds: { width: 30, depth: 25 },
       buildings: [],
       zones: [
         { id: 'b57-z1', color: '#00e5ff', area: { x: -10, z: -10, width: 10, depth: 20 }, polygon: [] },
-        { id: 'b57-z2', color: '#e040fb', area: { x: 0, z: -10, width: 10, depth: 20 }, polygon: [] },
-        { id: 'b57-z3', color: '#ffab00', area: { x: 10, z: -10, width: 10, depth: 20 }, polygon: [] },
       ],
       confluencePoints: [],
     },
@@ -4020,7 +3866,7 @@ export const bases: MilitaryBase[] = [
     location: { lat: 38.049217, lng: 127.151250 },
     region: '경기 포천시',
     personnelCount: 200,
-    zoneCount: 3,
+    zoneCount: 1,
     characteristics: ['operational'],
     boundary: [
       [38.0494544, 127.1516136],
@@ -4039,16 +3885,12 @@ export const bases: MilitaryBase[] = [
     ],
     zones: [
       { id: 'b58-z1', baseId: 'base-58', name: 'A구역', confluencePoint: 'A구역 합류지점', currentAlertLevel: 'normal' },
-      { id: 'b58-z2', baseId: 'base-58', name: 'B구역', confluencePoint: 'B구역 합류지점', currentAlertLevel: 'normal' },
-      { id: 'b58-z3', baseId: 'base-58', name: 'C구역', confluencePoint: 'C구역 합류지점', currentAlertLevel: 'normal' },
     ],
     layout: {
       grounds: { width: 30, depth: 25 },
       buildings: [],
       zones: [
         { id: 'b58-z1', color: '#00e5ff', area: { x: -10, z: -10, width: 10, depth: 20 }, polygon: [] },
-        { id: 'b58-z2', color: '#e040fb', area: { x: 0, z: -10, width: 10, depth: 20 }, polygon: [] },
-        { id: 'b58-z3', color: '#ffab00', area: { x: 10, z: -10, width: 10, depth: 20 }, polygon: [] },
       ],
       confluencePoints: [],
     },
@@ -4060,7 +3902,7 @@ export const bases: MilitaryBase[] = [
     location: { lat: 38.030415, lng: 127.142567 },
     region: '경기 포천시',
     personnelCount: 200,
-    zoneCount: 3,
+    zoneCount: 1,
     characteristics: ['operational'],
     boundary: [
       [38.0305286, 127.1423344],
@@ -4070,16 +3912,12 @@ export const bases: MilitaryBase[] = [
     ],
     zones: [
       { id: 'b59-z1', baseId: 'base-59', name: 'A구역', confluencePoint: 'A구역 합류지점', currentAlertLevel: 'normal' },
-      { id: 'b59-z2', baseId: 'base-59', name: 'B구역', confluencePoint: 'B구역 합류지점', currentAlertLevel: 'normal' },
-      { id: 'b59-z3', baseId: 'base-59', name: 'C구역', confluencePoint: 'C구역 합류지점', currentAlertLevel: 'normal' },
     ],
     layout: {
       grounds: { width: 30, depth: 25 },
       buildings: [],
       zones: [
         { id: 'b59-z1', color: '#00e5ff', area: { x: -10, z: -10, width: 10, depth: 20 }, polygon: [] },
-        { id: 'b59-z2', color: '#e040fb', area: { x: 0, z: -10, width: 10, depth: 20 }, polygon: [] },
-        { id: 'b59-z3', color: '#ffab00', area: { x: 10, z: -10, width: 10, depth: 20 }, polygon: [] },
       ],
       confluencePoints: [],
     },
