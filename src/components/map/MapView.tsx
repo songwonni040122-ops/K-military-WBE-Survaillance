@@ -158,6 +158,24 @@ export default function MapView() {
       }
     }
 
+    // Reset zone filters
+    if (map.getLayer('zone-fills')) {
+      map.setFilter('zone-fills', ['all', ['==', ['geometry-type'], 'Polygon'], ['==', ['get', 'baseId'], '']]);
+      map.setFilter('zone-outlines', ['all', ['==', ['geometry-type'], 'Polygon'], ['==', ['get', 'baseId'], '']]);
+      map.setFilter('zone-borders', ['all', ['==', ['geometry-type'], 'LineString'], ['==', ['get', 'baseId'], '']]);
+    }
+
+    // Reset hatch pattern on all bases when going back
+    bases.forEach((base) => {
+      if (map.getLayer(`boundary-fill-${base.id}`)) {
+        map.setPaintProperty(`boundary-fill-${base.id}`, 'fill-pattern', '');
+        map.setPaintProperty(`boundary-fill-${base.id}`, 'fill-color', '#cc2222');
+        map.setPaintProperty(`boundary-line-${base.id}`, 'line-color', '#cc3333');
+        map.setPaintProperty(`boundary-line-${base.id}`, 'line-width', 2);
+        map.setPaintProperty(`boundary-line-${base.id}`, 'line-opacity', 0.7);
+      }
+    });
+
     // Fly to division bounds
     if (div && !selectedBaseId) {
       const divBases = div.baseIds.map((bid) => allBases.find((b) => b.id === bid)).filter(Boolean);
@@ -166,12 +184,12 @@ export default function MapView() {
       if (allLngs.length > 0) {
         map.fitBounds(
           new maplibregl.LngLatBounds([Math.min(...allLngs), Math.min(...allLats)], [Math.max(...allLngs), Math.max(...allLats)]),
-          { padding: 60, duration: 1500, pitch: 0, bearing: 0 },
+          { padding: 60, duration: 1500, pitch: 30, bearing: map.getBearing() },
         );
       }
     }
 
-    // When no division selected, reset to Seoul view
+    // When no division and no base selected, reset to Seoul view
     if (!selectedDivisionId && !selectedBaseId) {
       map.flyTo({ center: SEOUL_CENTER, zoom: DEFAULT_ZOOM, pitch: 30, bearing: map.getBearing(), duration: 1500 });
     }
