@@ -100,13 +100,18 @@ export default function MapView() {
     const map = mapRef.current;
     if (!map || !mapReady) return;
 
-    // Find which baseIds belong to selected division
+    // Determine which base IDs should be visible
     const div = selectedDivisionId ? divisions.find((d) => d.id === selectedDivisionId) : null;
-    const divBaseIds = div ? new Set(div.baseIds) : null;
+    let visibleBaseIds: Set<string> | null = null;
+    if (div) {
+      visibleBaseIds = new Set(div.baseIds);
+    } else if (selectedBaseId) {
+      visibleBaseIds = new Set([selectedBaseId]);
+    }
 
     // Toggle visibility of each base's boundary layers
     bases.forEach((base) => {
-      const show = divBaseIds ? divBaseIds.has(base.id) : false;
+      const show = visibleBaseIds ? visibleBaseIds.has(base.id) : false;
       if (map.getLayer(`boundary-fill-${base.id}`)) {
         map.setLayoutProperty(`boundary-fill-${base.id}`, 'visibility', show ? 'visible' : 'none');
         map.setLayoutProperty(`boundary-line-${base.id}`, 'visibility', show ? 'visible' : 'none');
@@ -115,8 +120,8 @@ export default function MapView() {
 
     // Toggle base markers filter
     if (map.getLayer('base-markers-circle')) {
-      if (divBaseIds) {
-        map.setFilter('base-markers-circle', ['in', ['get', 'baseId'], ['literal', [...divBaseIds]]]);
+      if (visibleBaseIds) {
+        map.setFilter('base-markers-circle', ['in', ['get', 'baseId'], ['literal', [...visibleBaseIds]]]);
       } else {
         map.setFilter('base-markers-circle', ['==', ['get', 'baseId'], '']); // hide all
       }
