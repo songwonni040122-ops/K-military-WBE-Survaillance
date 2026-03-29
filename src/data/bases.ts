@@ -16,7 +16,7 @@ export const bases: MilitaryBase[] = [
     location: { lat: 37.459315, lng: 126.953215 },
     region: '서울',
     personnelCount: 10000,
-    zoneCount: 3,
+    zoneCount: 2,
     characteristics: ['operational'],
     boundary: [
       [37.4596133, 126.9577477],
@@ -249,9 +249,8 @@ export const bases: MilitaryBase[] = [
       [37.4595733, 126.9576858],
     ],
     zones: [
-      { id: 'b01-z1', baseId: 'base-01', name: 'A구역', confluencePoint: 'A구역 합류지점', currentAlertLevel: 'normal' },
+      { id: 'b01-z1', baseId: 'base-01', name: 'A구역', confluencePoint: 'A구역 합류지점', currentAlertLevel: 'warning' },
       { id: 'b01-z2', baseId: 'base-01', name: 'B구역', confluencePoint: 'B구역 합류지점', currentAlertLevel: 'normal' },
-      { id: 'b01-z3', baseId: 'base-01', name: 'C구역', confluencePoint: 'C구역 합류지점', currentAlertLevel: 'normal' },
     ],
     layout: {
       grounds: { width: 30, depth: 25 },
@@ -259,7 +258,6 @@ export const bases: MilitaryBase[] = [
       zones: [
         { id: 'b01-z1', color: '#00e5ff', area: { x: -10, z: -10, width: 10, depth: 20 }, polygon: [] },
         { id: 'b01-z2', color: '#e040fb', area: { x: 0, z: -10, width: 10, depth: 20 }, polygon: [] },
-        { id: 'b01-z3', color: '#ffab00', area: { x: 10, z: -10, width: 10, depth: 20 }, polygon: [] },
       ],
       confluencePoints: [],
     },
@@ -271,7 +269,7 @@ export const bases: MilitaryBase[] = [
     location: { lat: 37.566194, lng: 126.938032 },
     region: '서울',
     personnelCount: 10000,
-    zoneCount: 3,
+    zoneCount: 1,
     characteristics: ['operational'],
     boundary: [
       [37.5638679, 126.9339292],
@@ -422,16 +420,12 @@ export const bases: MilitaryBase[] = [
     ],
     zones: [
       { id: 'b02-z1', baseId: 'base-02', name: 'A구역', confluencePoint: 'A구역 합류지점', currentAlertLevel: 'normal' },
-      { id: 'b02-z2', baseId: 'base-02', name: 'B구역', confluencePoint: 'B구역 합류지점', currentAlertLevel: 'normal' },
-      { id: 'b02-z3', baseId: 'base-02', name: 'C구역', confluencePoint: 'C구역 합류지점', currentAlertLevel: 'normal' },
     ],
     layout: {
       grounds: { width: 30, depth: 25 },
       buildings: [],
       zones: [
         { id: 'b02-z1', color: '#00e5ff', area: { x: -10, z: -10, width: 10, depth: 20 }, polygon: [] },
-        { id: 'b02-z2', color: '#e040fb', area: { x: 0, z: -10, width: 10, depth: 20 }, polygon: [] },
-        { id: 'b02-z3', color: '#ffab00', area: { x: 10, z: -10, width: 10, depth: 20 }, polygon: [] },
       ],
       confluencePoints: [],
     },
@@ -443,7 +437,7 @@ export const bases: MilitaryBase[] = [
     location: { lat: 37.589102, lng: 127.028621 },
     region: '서울',
     personnelCount: 10000,
-    zoneCount: 3,
+    zoneCount: 2,
     characteristics: ['operational'],
     boundary: [
       [37.5911737, 127.0306922],
@@ -764,9 +758,8 @@ export const bases: MilitaryBase[] = [
       [37.5912027, 127.0308512],
     ],
     zones: [
-      { id: 'b03-z1', baseId: 'base-03', name: 'A구역', confluencePoint: 'A구역 합류지점', currentAlertLevel: 'normal' },
+      { id: 'b03-z1', baseId: 'base-03', name: 'A구역', confluencePoint: 'A구역 합류지점', currentAlertLevel: 'warning' },
       { id: 'b03-z2', baseId: 'base-03', name: 'B구역', confluencePoint: 'B구역 합류지점', currentAlertLevel: 'normal' },
-      { id: 'b03-z3', baseId: 'base-03', name: 'C구역', confluencePoint: 'C구역 합류지점', currentAlertLevel: 'normal' },
     ],
     layout: {
       grounds: { width: 30, depth: 25 },
@@ -774,7 +767,6 @@ export const bases: MilitaryBase[] = [
       zones: [
         { id: 'b03-z1', color: '#00e5ff', area: { x: -10, z: -10, width: 10, depth: 20 }, polygon: [] },
         { id: 'b03-z2', color: '#e040fb', area: { x: 0, z: -10, width: 10, depth: 20 }, polygon: [] },
-        { id: 'b03-z3', color: '#ffab00', area: { x: 10, z: -10, width: 10, depth: 20 }, polygon: [] },
       ],
       confluencePoints: [],
     },
@@ -786,7 +778,7 @@ export const bases: MilitaryBase[] = [
     location: { lat: 37.542076, lng: 127.076560 },
     region: '서울',
     personnelCount: 9100,
-    zoneCount: 3,
+    zoneCount: 1,
     characteristics: ['operational'],
     boundary: [
       [37.5444944, 127.0729458],
@@ -861,16 +853,12 @@ export const bases: MilitaryBase[] = [
     ],
     zones: [
       { id: 'b04-z1', baseId: 'base-04', name: 'A구역', confluencePoint: 'A구역 합류지점', currentAlertLevel: 'normal' },
-      { id: 'b04-z2', baseId: 'base-04', name: 'B구역', confluencePoint: 'B구역 합류지점', currentAlertLevel: 'normal' },
-      { id: 'b04-z3', baseId: 'base-04', name: 'C구역', confluencePoint: 'C구역 합류지점', currentAlertLevel: 'normal' },
     ],
     layout: {
       grounds: { width: 30, depth: 25 },
       buildings: [],
       zones: [
         { id: 'b04-z1', color: '#00e5ff', area: { x: -10, z: -10, width: 10, depth: 20 }, polygon: [] },
-        { id: 'b04-z2', color: '#e040fb', area: { x: 0, z: -10, width: 10, depth: 20 }, polygon: [] },
-        { id: 'b04-z3', color: '#ffab00', area: { x: 10, z: -10, width: 10, depth: 20 }, polygon: [] },
       ],
       confluencePoints: [],
     },
@@ -944,9 +932,9 @@ export const bases: MilitaryBase[] = [
       [37.6327085, 127.0760787],
     ],
     zones: [
-      { id: 'b05-z1', baseId: 'base-05', name: 'A구역', confluencePoint: 'A구역 합류지점', currentAlertLevel: 'normal' },
-      { id: 'b05-z2', baseId: 'base-05', name: 'B구역', confluencePoint: 'B구역 합류지점', currentAlertLevel: 'warning' },
-      { id: 'b05-z3', baseId: 'base-05', name: 'C구역', confluencePoint: 'C구역 합류지점', currentAlertLevel: 'normal' },
+      { id: 'b05-z1', baseId: 'base-05', name: 'A구역', confluencePoint: 'A구역 합류지점', currentAlertLevel: 'warning' },
+      { id: 'b05-z2', baseId: 'base-05', name: 'B구역', confluencePoint: 'B구역 합류지점', currentAlertLevel: 'normal' },
+      { id: 'b05-z3', baseId: 'base-05', name: 'C구역', confluencePoint: 'C구역 합류지점', currentAlertLevel: 'caution' },
     ],
     layout: {
       grounds: { width: 30, depth: 25 },
@@ -966,7 +954,7 @@ export const bases: MilitaryBase[] = [
     location: { lat: 37.595369, lng: 127.052835 },
     region: '서울',
     personnelCount: 8800,
-    zoneCount: 3,
+    zoneCount: 1,
     characteristics: ['operational'],
     boundary: [
       [37.5971408, 127.0561368],
@@ -1099,16 +1087,12 @@ export const bases: MilitaryBase[] = [
     ],
     zones: [
       { id: 'b06-z1', baseId: 'base-06', name: 'A구역', confluencePoint: 'A구역 합류지점', currentAlertLevel: 'normal' },
-      { id: 'b06-z2', baseId: 'base-06', name: 'B구역', confluencePoint: 'B구역 합류지점', currentAlertLevel: 'normal' },
-      { id: 'b06-z3', baseId: 'base-06', name: 'C구역', confluencePoint: 'C구역 합류지점', currentAlertLevel: 'normal' },
     ],
     layout: {
       grounds: { width: 30, depth: 25 },
       buildings: [],
       zones: [
         { id: 'b06-z1', color: '#00e5ff', area: { x: -10, z: -10, width: 10, depth: 20 }, polygon: [] },
-        { id: 'b06-z2', color: '#e040fb', area: { x: 0, z: -10, width: 10, depth: 20 }, polygon: [] },
-        { id: 'b06-z3', color: '#ffab00', area: { x: 10, z: -10, width: 10, depth: 20 }, polygon: [] },
       ],
       confluencePoints: [],
     },
@@ -1120,7 +1104,7 @@ export const bases: MilitaryBase[] = [
     location: { lat: 37.564960, lng: 126.948715 },
     region: '서울',
     personnelCount: 8100,
-    zoneCount: 3,
+    zoneCount: 1,
     characteristics: ['operational'],
     boundary: [
       [37.5613167, 126.9417014],
@@ -1196,17 +1180,13 @@ export const bases: MilitaryBase[] = [
       [37.5625064, 126.9432754],
     ],
     zones: [
-      { id: 'b07-z1', baseId: 'base-07', name: 'A구역', confluencePoint: 'A구역 합류지점', currentAlertLevel: 'caution' },
-      { id: 'b07-z2', baseId: 'base-07', name: 'B구역', confluencePoint: 'B구역 합류지점', currentAlertLevel: 'normal' },
-      { id: 'b07-z3', baseId: 'base-07', name: 'C구역', confluencePoint: 'C구역 합류지점', currentAlertLevel: 'normal' },
+      { id: 'b07-z1', baseId: 'base-07', name: 'A구역', confluencePoint: 'A구역 합류지점', currentAlertLevel: 'normal' },
     ],
     layout: {
       grounds: { width: 30, depth: 25 },
       buildings: [],
       zones: [
         { id: 'b07-z1', color: '#00e5ff', area: { x: -10, z: -10, width: 10, depth: 20 }, polygon: [] },
-        { id: 'b07-z2', color: '#e040fb', area: { x: 0, z: -10, width: 10, depth: 20 }, polygon: [] },
-        { id: 'b07-z3', color: '#ffab00', area: { x: 10, z: -10, width: 10, depth: 20 }, polygon: [] },
       ],
       confluencePoints: [],
     },
@@ -1218,7 +1198,7 @@ export const bases: MilitaryBase[] = [
     location: { lat: 37.642121, lng: 127.105613 },
     region: '서울',
     personnelCount: 7800,
-    zoneCount: 3,
+    zoneCount: 2,
     characteristics: ['operational'],
     boundary: [
       [37.6435814, 127.1091086],
@@ -1262,9 +1242,8 @@ export const bases: MilitaryBase[] = [
       [37.6422320, 127.1099848],
     ],
     zones: [
-      { id: 'b08-z1', baseId: 'base-08', name: 'A구역', confluencePoint: 'A구역 합류지점', currentAlertLevel: 'normal' },
+      { id: 'b08-z1', baseId: 'base-08', name: 'A구역', confluencePoint: 'A구역 합류지점', currentAlertLevel: 'warning' },
       { id: 'b08-z2', baseId: 'base-08', name: 'B구역', confluencePoint: 'B구역 합류지점', currentAlertLevel: 'normal' },
-      { id: 'b08-z3', baseId: 'base-08', name: 'C구역', confluencePoint: 'C구역 합류지점', currentAlertLevel: 'normal' },
     ],
     layout: {
       grounds: { width: 30, depth: 25 },
@@ -1272,7 +1251,6 @@ export const bases: MilitaryBase[] = [
       zones: [
         { id: 'b08-z1', color: '#00e5ff', area: { x: -10, z: -10, width: 10, depth: 20 }, polygon: [] },
         { id: 'b08-z2', color: '#e040fb', area: { x: 0, z: -10, width: 10, depth: 20 }, polygon: [] },
-        { id: 'b08-z3', color: '#ffab00', area: { x: 10, z: -10, width: 10, depth: 20 }, polygon: [] },
       ],
       confluencePoints: [],
     },
@@ -1352,7 +1330,7 @@ export const bases: MilitaryBase[] = [
     location: { lat: 37.464162, lng: 126.804476 },
     region: '서울',
     personnelCount: 1200,
-    zoneCount: 1,
+    zoneCount: 2,
     characteristics: ['operational'],
     boundary: [
       [37.4640801, 126.8010900],
@@ -1423,13 +1401,15 @@ export const bases: MilitaryBase[] = [
       [37.4641727, 126.8017018],
     ],
     zones: [
-      { id: 'b10-z1', baseId: 'base-10', name: 'A구역', confluencePoint: 'A구역 합류지점', currentAlertLevel: 'normal' },
+      { id: 'b10-z1', baseId: 'base-10', name: 'A구역', confluencePoint: 'A구역 합류지점', currentAlertLevel: 'warning' },
+      { id: 'b10-z2', baseId: 'base-10', name: 'B구역', confluencePoint: 'B구역 합류지점', currentAlertLevel: 'normal' },
     ],
     layout: {
       grounds: { width: 30, depth: 25 },
       buildings: [],
       zones: [
         { id: 'b10-z1', color: '#00e5ff', area: { x: -10, z: -10, width: 10, depth: 20 }, polygon: [] },
+        { id: 'b10-z2', color: '#e040fb', area: { x: 0, z: -10, width: 10, depth: 20 }, polygon: [] },
       ],
       confluencePoints: [],
     },
@@ -1585,7 +1565,7 @@ export const bases: MilitaryBase[] = [
       [37.4999604, 126.8688111],
     ],
     zones: [
-      { id: 'b14-z1', baseId: 'base-14', name: 'A구역', confluencePoint: 'A구역 합류지점', currentAlertLevel: 'caution' },
+      { id: 'b14-z1', baseId: 'base-14', name: 'A구역', confluencePoint: 'A구역 합류지점', currentAlertLevel: 'normal' },
     ],
     layout: {
       grounds: { width: 30, depth: 25 },
@@ -1603,7 +1583,7 @@ export const bases: MilitaryBase[] = [
     location: { lat: 37.549634, lng: 126.842221 },
     region: '서울',
     personnelCount: 700,
-    zoneCount: 1,
+    zoneCount: 2,
     characteristics: ['operational'],
     boundary: [
       [37.5500218, 126.8401899],
@@ -1631,13 +1611,15 @@ export const bases: MilitaryBase[] = [
       [37.5500825, 126.8404848],
     ],
     zones: [
-      { id: 'b15-z1', baseId: 'base-15', name: 'A구역', confluencePoint: 'A구역 합류지점', currentAlertLevel: 'normal' },
+      { id: 'b15-z1', baseId: 'base-15', name: 'A구역', confluencePoint: 'A구역 합류지점', currentAlertLevel: 'warning' },
+      { id: 'b15-z2', baseId: 'base-15', name: 'B구역', confluencePoint: 'B구역 합류지점', currentAlertLevel: 'normal' },
     ],
     layout: {
       grounds: { width: 30, depth: 25 },
       buildings: [],
       zones: [
         { id: 'b15-z1', color: '#00e5ff', area: { x: -10, z: -10, width: 10, depth: 20 }, polygon: [] },
+        { id: 'b15-z2', color: '#e040fb', area: { x: 0, z: -10, width: 10, depth: 20 }, polygon: [] },
       ],
       confluencePoints: [],
     },
@@ -1763,7 +1745,7 @@ export const bases: MilitaryBase[] = [
     location: { lat: 37.659076, lng: 126.872535 },
     region: '서울',
     personnelCount: 5700,
-    zoneCount: 2,
+    zoneCount: 1,
     characteristics: ['operational'],
     boundary: [
       [37.6571525, 126.8734318],
@@ -1787,14 +1769,12 @@ export const bases: MilitaryBase[] = [
     ],
     zones: [
       { id: 'b18-z1', baseId: 'base-18', name: 'A구역', confluencePoint: 'A구역 합류지점', currentAlertLevel: 'normal' },
-      { id: 'b18-z2', baseId: 'base-18', name: 'B구역', confluencePoint: 'B구역 합류지점', currentAlertLevel: 'normal' },
     ],
     layout: {
       grounds: { width: 30, depth: 25 },
       buildings: [],
       zones: [
         { id: 'b18-z1', color: '#00e5ff', area: { x: -10, z: -10, width: 10, depth: 20 }, polygon: [] },
-        { id: 'b18-z2', color: '#e040fb', area: { x: 0, z: -10, width: 10, depth: 20 }, polygon: [] },
       ],
       confluencePoints: [],
     },
@@ -1806,7 +1786,7 @@ export const bases: MilitaryBase[] = [
     location: { lat: 37.433381, lng: 126.916758 },
     region: '서울',
     personnelCount: 4400,
-    zoneCount: 2,
+    zoneCount: 1,
     characteristics: ['operational'],
     boundary: [
       [37.4364007, 126.9194485],
@@ -1834,14 +1814,12 @@ export const bases: MilitaryBase[] = [
     ],
     zones: [
       { id: 'b19-z1', baseId: 'base-19', name: 'A구역', confluencePoint: 'A구역 합류지점', currentAlertLevel: 'normal' },
-      { id: 'b19-z2', baseId: 'base-19', name: 'B구역', confluencePoint: 'B구역 합류지점', currentAlertLevel: 'normal' },
     ],
     layout: {
       grounds: { width: 30, depth: 25 },
       buildings: [],
       zones: [
         { id: 'b19-z1', color: '#00e5ff', area: { x: -10, z: -10, width: 10, depth: 20 }, polygon: [] },
-        { id: 'b19-z2', color: '#e040fb', area: { x: 0, z: -10, width: 10, depth: 20 }, polygon: [] },
       ],
       confluencePoints: [],
     },
@@ -1853,7 +1831,7 @@ export const bases: MilitaryBase[] = [
     location: { lat: 37.504929, lng: 126.956534 },
     region: '서울',
     personnelCount: 2900,
-    zoneCount: 1,
+    zoneCount: 2,
     characteristics: ['operational'],
     boundary: [
       [37.5049046, 126.9538780],
@@ -1904,13 +1882,15 @@ export const bases: MilitaryBase[] = [
       [37.5050133, 126.9539423],
     ],
     zones: [
-      { id: 'b20-z1', baseId: 'base-20', name: 'A구역', confluencePoint: 'A구역 합류지점', currentAlertLevel: 'normal' },
+      { id: 'b20-z1', baseId: 'base-20', name: 'A구역', confluencePoint: 'A구역 합류지점', currentAlertLevel: 'warning' },
+      { id: 'b20-z2', baseId: 'base-20', name: 'B구역', confluencePoint: 'B구역 합류지점', currentAlertLevel: 'normal' },
     ],
     layout: {
       grounds: { width: 30, depth: 25 },
       buildings: [],
       zones: [
         { id: 'b20-z1', color: '#00e5ff', area: { x: -10, z: -10, width: 10, depth: 20 }, polygon: [] },
+        { id: 'b20-z2', color: '#e040fb', area: { x: 0, z: -10, width: 10, depth: 20 }, polygon: [] },
       ],
       confluencePoints: [],
     },
@@ -1962,7 +1942,7 @@ export const bases: MilitaryBase[] = [
       [37.4968614, 126.9545096],
     ],
     zones: [
-      { id: 'b21-z1', baseId: 'base-21', name: 'A구역', confluencePoint: 'A구역 합류지점', currentAlertLevel: 'caution' },
+      { id: 'b21-z1', baseId: 'base-21', name: 'A구역', confluencePoint: 'A구역 합류지점', currentAlertLevel: 'normal' },
     ],
     layout: {
       grounds: { width: 30, depth: 25 },
@@ -2114,7 +2094,7 @@ export const bases: MilitaryBase[] = [
     location: { lat: 37.580054, lng: 126.922749 },
     region: '서울',
     personnelCount: 1100,
-    zoneCount: 1,
+    zoneCount: 2,
     characteristics: ['operational'],
     boundary: [
       [37.5791522, 126.9219139],
@@ -2137,13 +2117,15 @@ export const bases: MilitaryBase[] = [
       [37.5800696, 126.9211896],
     ],
     zones: [
-      { id: 'b25-z1', baseId: 'base-25', name: 'A구역', confluencePoint: 'A구역 합류지점', currentAlertLevel: 'normal' },
+      { id: 'b25-z1', baseId: 'base-25', name: 'A구역', confluencePoint: 'A구역 합류지점', currentAlertLevel: 'warning' },
+      { id: 'b25-z2', baseId: 'base-25', name: 'B구역', confluencePoint: 'B구역 합류지점', currentAlertLevel: 'normal' },
     ],
     layout: {
       grounds: { width: 30, depth: 25 },
       buildings: [],
       zones: [
         { id: 'b25-z1', color: '#00e5ff', area: { x: -10, z: -10, width: 10, depth: 20 }, polygon: [] },
+        { id: 'b25-z2', color: '#e040fb', area: { x: 0, z: -10, width: 10, depth: 20 }, polygon: [] },
       ],
       confluencePoints: [],
     },
@@ -2230,7 +2212,7 @@ export const bases: MilitaryBase[] = [
     location: { lat: 37.552575, lng: 126.941452 },
     region: '서울',
     personnelCount: 4200,
-    zoneCount: 2,
+    zoneCount: 1,
     characteristics: ['operational'],
     boundary: [
       [37.5535172, 126.9400263],
@@ -2289,14 +2271,12 @@ export const bases: MilitaryBase[] = [
     ],
     zones: [
       { id: 'b27-z1', baseId: 'base-27', name: 'A구역', confluencePoint: 'A구역 합류지점', currentAlertLevel: 'normal' },
-      { id: 'b27-z2', baseId: 'base-27', name: 'B구역', confluencePoint: 'B구역 합류지점', currentAlertLevel: 'normal' },
     ],
     layout: {
       grounds: { width: 30, depth: 25 },
       buildings: [],
       zones: [
         { id: 'b27-z1', color: '#00e5ff', area: { x: -10, z: -10, width: 10, depth: 20 }, polygon: [] },
-        { id: 'b27-z2', color: '#e040fb', area: { x: 0, z: -10, width: 10, depth: 20 }, polygon: [] },
       ],
       confluencePoints: [],
     },
@@ -2367,7 +2347,7 @@ export const bases: MilitaryBase[] = [
       [37.6019809, 126.9565337],
     ],
     zones: [
-      { id: 'b28-z1', baseId: 'base-28', name: 'A구역', confluencePoint: 'A구역 합류지점', currentAlertLevel: 'caution' },
+      { id: 'b28-z1', baseId: 'base-28', name: 'A구역', confluencePoint: 'A구역 합류지점', currentAlertLevel: 'normal' },
     ],
     layout: {
       grounds: { width: 30, depth: 25 },
@@ -2428,7 +2408,7 @@ export const bases: MilitaryBase[] = [
     location: { lat: 37.567458, lng: 126.962145 },
     region: '서울',
     personnelCount: 800,
-    zoneCount: 1,
+    zoneCount: 2,
     characteristics: ['operational'],
     boundary: [
       [37.5683013, 126.9619482],
@@ -2462,13 +2442,15 @@ export const bases: MilitaryBase[] = [
       [37.5680754, 126.9623610],
     ],
     zones: [
-      { id: 'b30-z1', baseId: 'base-30', name: 'A구역', confluencePoint: 'A구역 합류지점', currentAlertLevel: 'normal' },
+      { id: 'b30-z1', baseId: 'base-30', name: 'A구역', confluencePoint: 'A구역 합류지점', currentAlertLevel: 'warning' },
+      { id: 'b30-z2', baseId: 'base-30', name: 'B구역', confluencePoint: 'B구역 합류지점', currentAlertLevel: 'normal' },
     ],
     layout: {
       grounds: { width: 30, depth: 25 },
       buildings: [],
       zones: [
         { id: 'b30-z1', color: '#00e5ff', area: { x: -10, z: -10, width: 10, depth: 20 }, polygon: [] },
+        { id: 'b30-z2', color: '#e040fb', area: { x: 0, z: -10, width: 10, depth: 20 }, polygon: [] },
       ],
       confluencePoints: [],
     },
@@ -2854,7 +2836,7 @@ export const bases: MilitaryBase[] = [
     location: { lat: 37.558553, lng: 127.000520 },
     region: '서울',
     personnelCount: 2800,
-    zoneCount: 1,
+    zoneCount: 2,
     characteristics: ['operational'],
     boundary: [
       [37.5606494, 126.9992351],
@@ -2929,13 +2911,15 @@ export const bases: MilitaryBase[] = [
       [37.5604473, 127.0000714],
     ],
     zones: [
-      { id: 'b35-z1', baseId: 'base-35', name: 'A구역', confluencePoint: 'A구역 합류지점', currentAlertLevel: 'caution' },
+      { id: 'b35-z1', baseId: 'base-35', name: 'A구역', confluencePoint: 'A구역 합류지점', currentAlertLevel: 'warning' },
+      { id: 'b35-z2', baseId: 'base-35', name: 'B구역', confluencePoint: 'B구역 합류지점', currentAlertLevel: 'normal' },
     ],
     layout: {
       grounds: { width: 30, depth: 25 },
       buildings: [],
       zones: [
         { id: 'b35-z1', color: '#00e5ff', area: { x: -10, z: -10, width: 10, depth: 20 }, polygon: [] },
+        { id: 'b35-z2', color: '#e040fb', area: { x: 0, z: -10, width: 10, depth: 20 }, polygon: [] },
       ],
       confluencePoints: [],
     },
@@ -3239,8 +3223,8 @@ export const bases: MilitaryBase[] = [
       [37.4497750, 127.1268950],
     ],
     zones: [
-      { id: 'b40-z1', baseId: 'base-40', name: 'A구역', confluencePoint: 'A구역 합류지점', currentAlertLevel: 'normal' },
-      { id: 'b40-z2', baseId: 'base-40', name: 'B구역', confluencePoint: 'B구역 합류지점', currentAlertLevel: 'warning' },
+      { id: 'b40-z1', baseId: 'base-40', name: 'A구역', confluencePoint: 'A구역 합류지점', currentAlertLevel: 'warning' },
+      { id: 'b40-z2', baseId: 'base-40', name: 'B구역', confluencePoint: 'B구역 합류지점', currentAlertLevel: 'normal' },
     ],
     layout: {
       grounds: { width: 30, depth: 25 },
@@ -3316,7 +3300,7 @@ export const bases: MilitaryBase[] = [
       [37.6337569, 127.0124696],
     ],
     zones: [
-      { id: 'b42-z1', baseId: 'base-42', name: 'A구역', confluencePoint: 'A구역 합류지점', currentAlertLevel: 'caution' },
+      { id: 'b42-z1', baseId: 'base-42', name: 'A구역', confluencePoint: 'A구역 합류지점', currentAlertLevel: 'normal' },
     ],
     layout: {
       grounds: { width: 30, depth: 25 },
@@ -3477,7 +3461,7 @@ export const bases: MilitaryBase[] = [
     location: { lat: 37.591110, lng: 127.022193 },
     region: '서울',
     personnelCount: 1100,
-    zoneCount: 1,
+    zoneCount: 3,
     characteristics: ['operational'],
     boundary: [
       [37.5933163, 127.0211920],
@@ -3500,13 +3484,17 @@ export const bases: MilitaryBase[] = [
       [37.5927898, 127.0216713],
     ],
     zones: [
-      { id: 'b45-z1', baseId: 'base-45', name: 'A구역', confluencePoint: 'A구역 합류지점', currentAlertLevel: 'normal' },
+      { id: 'b45-z1', baseId: 'base-45', name: 'A구역', confluencePoint: 'A구역 합류지점', currentAlertLevel: 'warning' },
+      { id: 'b45-z2', baseId: 'base-45', name: 'B구역', confluencePoint: 'B구역 합류지점', currentAlertLevel: 'normal' },
+      { id: 'b45-z3', baseId: 'base-45', name: 'C구역', confluencePoint: 'C구역 합류지점', currentAlertLevel: 'caution' },
     ],
     layout: {
       grounds: { width: 30, depth: 25 },
       buildings: [],
       zones: [
         { id: 'b45-z1', color: '#00e5ff', area: { x: -10, z: -10, width: 10, depth: 20 }, polygon: [] },
+        { id: 'b45-z2', color: '#e040fb', area: { x: 0, z: -10, width: 10, depth: 20 }, polygon: [] },
+        { id: 'b45-z3', color: '#ffab00', area: { x: 10, z: -10, width: 10, depth: 20 }, polygon: [] },
       ],
       confluencePoints: [],
     },
@@ -3594,7 +3582,7 @@ export const bases: MilitaryBase[] = [
     location: { lat: 37.557713, lng: 127.046098 },
     region: '서울',
     personnelCount: 6000,
-    zoneCount: 3,
+    zoneCount: 1,
     characteristics: ['operational'],
     boundary: [
       [37.5584994, 127.0478859],
@@ -3750,16 +3738,12 @@ export const bases: MilitaryBase[] = [
     ],
     zones: [
       { id: 'b47-z1', baseId: 'base-47', name: 'A구역', confluencePoint: 'A구역 합류지점', currentAlertLevel: 'normal' },
-      { id: 'b47-z2', baseId: 'base-47', name: 'B구역', confluencePoint: 'B구역 합류지점', currentAlertLevel: 'normal' },
-      { id: 'b47-z3', baseId: 'base-47', name: 'C구역', confluencePoint: 'C구역 합류지점', currentAlertLevel: 'normal' },
     ],
     layout: {
       grounds: { width: 30, depth: 25 },
       buildings: [],
       zones: [
         { id: 'b47-z1', color: '#00e5ff', area: { x: -10, z: -10, width: 10, depth: 20 }, polygon: [] },
-        { id: 'b47-z2', color: '#e040fb', area: { x: 0, z: -10, width: 10, depth: 20 }, polygon: [] },
-        { id: 'b47-z3', color: '#ffab00', area: { x: 10, z: -10, width: 10, depth: 20 }, polygon: [] },
       ],
       confluencePoints: [],
     },
@@ -3868,7 +3852,7 @@ export const bases: MilitaryBase[] = [
       [37.6295688, 127.0546919],
     ],
     zones: [
-      { id: 'b49-z1', baseId: 'base-49', name: 'A구역', confluencePoint: 'A구역 합류지점', currentAlertLevel: 'caution' },
+      { id: 'b49-z1', baseId: 'base-49', name: 'A구역', confluencePoint: 'A구역 합류지점', currentAlertLevel: 'normal' },
     ],
     layout: {
       grounds: { width: 30, depth: 25 },
@@ -3886,7 +3870,7 @@ export const bases: MilitaryBase[] = [
     location: { lat: 37.597133, lng: 127.058315 },
     region: '서울',
     personnelCount: 1700,
-    zoneCount: 1,
+    zoneCount: 2,
     characteristics: ['operational'],
     boundary: [
       [37.5985749, 127.0578714],
@@ -3923,13 +3907,15 @@ export const bases: MilitaryBase[] = [
       [37.5985581, 127.0582309],
     ],
     zones: [
-      { id: 'b50-z1', baseId: 'base-50', name: 'A구역', confluencePoint: 'A구역 합류지점', currentAlertLevel: 'normal' },
+      { id: 'b50-z1', baseId: 'base-50', name: 'A구역', confluencePoint: 'A구역 합류지점', currentAlertLevel: 'warning' },
+      { id: 'b50-z2', baseId: 'base-50', name: 'B구역', confluencePoint: 'B구역 합류지점', currentAlertLevel: 'normal' },
     ],
     layout: {
       grounds: { width: 30, depth: 25 },
       buildings: [],
       zones: [
         { id: 'b50-z1', color: '#00e5ff', area: { x: -10, z: -10, width: 10, depth: 20 }, polygon: [] },
+        { id: 'b50-z2', color: '#e040fb', area: { x: 0, z: -10, width: 10, depth: 20 }, polygon: [] },
       ],
       confluencePoints: [],
     },
@@ -3941,7 +3927,7 @@ export const bases: MilitaryBase[] = [
     location: { lat: 37.583589, lng: 127.058833 },
     region: '서울',
     personnelCount: 5600,
-    zoneCount: 2,
+    zoneCount: 1,
     characteristics: ['operational'],
     boundary: [
       [37.5840742, 127.0548115],
@@ -4290,14 +4276,12 @@ export const bases: MilitaryBase[] = [
     ],
     zones: [
       { id: 'b51-z1', baseId: 'base-51', name: 'A구역', confluencePoint: 'A구역 합류지점', currentAlertLevel: 'normal' },
-      { id: 'b51-z2', baseId: 'base-51', name: 'B구역', confluencePoint: 'B구역 합류지점', currentAlertLevel: 'normal' },
     ],
     layout: {
       grounds: { width: 30, depth: 25 },
       buildings: [],
       zones: [
         { id: 'b51-z1', color: '#00e5ff', area: { x: -10, z: -10, width: 10, depth: 20 }, polygon: [] },
-        { id: 'b51-z2', color: '#e040fb', area: { x: 0, z: -10, width: 10, depth: 20 }, polygon: [] },
       ],
       confluencePoints: [],
     },
@@ -4551,7 +4535,7 @@ export const bases: MilitaryBase[] = [
     location: { lat: 37.627499, lng: 127.090418 },
     region: '서울',
     personnelCount: 3600,
-    zoneCount: 2,
+    zoneCount: 1,
     characteristics: ['operational'],
     boundary: [
       [37.6290429, 127.0882146],
@@ -4607,15 +4591,13 @@ export const bases: MilitaryBase[] = [
       [37.6293896, 127.0883318],
     ],
     zones: [
-      { id: 'b56-z1', baseId: 'base-56', name: 'A구역', confluencePoint: 'A구역 합류지점', currentAlertLevel: 'caution' },
-      { id: 'b56-z2', baseId: 'base-56', name: 'B구역', confluencePoint: 'B구역 합류지점', currentAlertLevel: 'normal' },
+      { id: 'b56-z1', baseId: 'base-56', name: 'A구역', confluencePoint: 'A구역 합류지점', currentAlertLevel: 'normal' },
     ],
     layout: {
       grounds: { width: 30, depth: 25 },
       buildings: [],
       zones: [
         { id: 'b56-z1', color: '#00e5ff', area: { x: -10, z: -10, width: 10, depth: 20 }, polygon: [] },
-        { id: 'b56-z2', color: '#e040fb', area: { x: 0, z: -10, width: 10, depth: 20 }, polygon: [] },
       ],
       confluencePoints: [],
     },
