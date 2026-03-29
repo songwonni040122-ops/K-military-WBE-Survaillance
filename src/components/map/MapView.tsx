@@ -232,8 +232,8 @@ export default function MapView() {
     if (!map || !mapReady) return;
 
     if (selectedZoneId && selectedBaseId) {
-      map.setFilter('zone-fills', ['all', ['==', ['geometry-type'], 'Polygon'], ['==', ['get', 'baseId'], selectedBaseId]]);
-      map.setFilter('zone-outlines', ['all', ['==', ['geometry-type'], 'Polygon'], ['==', ['get', 'baseId'], selectedBaseId]]);
+      map.setFilter('zone-fills', ['all', ['==', ['geometry-type'], 'Polygon'], ['==', ['get', 'zoneId'], selectedZoneId]]);
+      map.setFilter('zone-outlines', ['all', ['==', ['geometry-type'], 'Polygon'], ['==', ['get', 'zoneId'], selectedZoneId]]);
       map.setFilter('zone-borders', ['all', ['==', ['geometry-type'], 'LineString'], ['==', ['get', 'baseId'], selectedBaseId]]);
     } else if (!selectedZoneId) {
       map.setFilter('zone-fills', ['all', ['==', ['geometry-type'], 'Polygon'], ['==', ['get', 'baseId'], '']]);
