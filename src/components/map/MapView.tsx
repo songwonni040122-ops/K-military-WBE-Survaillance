@@ -59,6 +59,7 @@ export default function MapView() {
   const mapContainerRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<maplibregl.Map | null>(null);
   const popupRef = useRef<maplibregl.Popup | null>(null);
+  const rotationRef = useRef<number | null>(null);
   const [mapReady, setMapReady] = useState(false);
 
   const { bases } = useBaseData();
@@ -83,7 +84,7 @@ export default function MapView() {
         layers: [{ id: 'carto-dark-layer', type: 'raster', source: 'carto-dark', minzoom: 0, maxzoom: 20 }],
         glyphs: 'https://demotiles.maplibre.org/font/{fontstack}/{range}.pbf',
       },
-      center: SEOUL_CENTER, zoom: DEFAULT_ZOOM, minZoom: 6, maxZoom: 18, pitch: 0, bearing: 0,
+      center: SEOUL_CENTER, zoom: DEFAULT_ZOOM, minZoom: 6, maxZoom: 18, pitch: 30, bearing: 0,
     });
     map.addControl(new maplibregl.NavigationControl(), 'bottom-left');
     map.on('load', () => {
@@ -91,8 +92,35 @@ export default function MapView() {
       mapRef.current = map;
       setMapInstance(map);
       setMapReady(true);
+
+      // Slow idle rotation
+      let bearing = 0;
+      const rotate = () => {
+        if (!mapRef.current) return;
+        bearing += 0.03;
+        mapRef.current.setBearing(bearing % 360);
+        rotationRef.current = requestAnimationFrame(rotate);
+      };
+      rotationRef.current = requestAnimationFrame(rotate);
+
+      // Stop rotation on user interaction, resume after idle
+      let idleTimer: ReturnType<typeof setTimeout> | null = null;
+      const stopRotation = () => {
+        if (rotationRef.current) { cancelAnimationFrame(rotationRef.current); rotationRef.current = null; }
+        if (idleTimer) clearTimeout(idleTimer);
+        idleTimer = setTimeout(() => {
+          bearing = mapRef.current?.getBearing() || 0;
+          rotationRef.current = requestAnimationFrame(rotate);
+        }, 8000);
+      };
+      map.on('mousedown', stopRotation);
+      map.on('touchstart', stopRotation);
+      map.on('wheel', stopRotation);
     });
-    return () => { setMapInstance(null); map.remove(); mapRef.current = null; };
+    return () => {
+      if (rotationRef.current) cancelAnimationFrame(rotationRef.current);
+      setMapInstance(null); map.remove(); mapRef.current = null;
+    };
   }, [setMapInstance]);
 
   // Fly to division area + show only division's bases
@@ -142,7 +170,7 @@ export default function MapView() {
 
     // When no division selected, reset to Seoul view
     if (!selectedDivisionId && !selectedBaseId) {
-      map.flyTo({ center: SEOUL_CENTER, zoom: DEFAULT_ZOOM, pitch: 0, bearing: 0, duration: 1500 });
+      map.flyTo({ center: SEOUL_CENTER, zoom: DEFAULT_ZOOM, pitch: 30, bearing: map.getBearing(), duration: 1500 });
     }
   }, [selectedDivisionId, selectedBaseId, mapReady, bases]);
 
