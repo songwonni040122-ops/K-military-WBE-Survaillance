@@ -36,7 +36,7 @@ function flyToBounds(map: maplibregl.Map, baseId: string) {
   const lats = base.boundary.map(([lat]) => lat);
   map.fitBounds(
     new maplibregl.LngLatBounds([Math.min(...lngs), Math.min(...lats)], [Math.max(...lngs), Math.max(...lats)]),
-    { padding: 80, duration: 2000, pitch: 50, bearing: -20 },
+    { padding: 80, duration: 2000, pitch: 50, bearing: map.getBearing() },
   );
 }
 
