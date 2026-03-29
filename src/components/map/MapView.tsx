@@ -95,26 +95,51 @@ export default function MapView() {
     return () => { setMapInstance(null); map.remove(); mapRef.current = null; };
   }, [setMapInstance]);
 
-  // Fly to division area
+  // Fly to division area + show only division's bases
   useEffect(() => {
     const map = mapRef.current;
     if (!map || !mapReady) return;
-    if (selectedDivisionId && !selectedBaseId) {
-      const div = divisions.find((d) => d.id === selectedDivisionId);
-      if (div) {
-        // Compute bounds of all bases in this division
-        const divBases = div.baseIds.map((bid) => allBases.find((b) => b.id === bid)).filter(Boolean);
-        const allLngs = divBases.flatMap((b) => b!.boundary.map(([, lng]) => lng));
-        const allLats = divBases.flatMap((b) => b!.boundary.map(([lat]) => lat));
-        if (allLngs.length > 0) {
-          map.fitBounds(
-            new maplibregl.LngLatBounds([Math.min(...allLngs), Math.min(...allLats)], [Math.max(...allLngs), Math.max(...allLats)]),
-            { padding: 60, duration: 1500, pitch: 0, bearing: 0 },
-          );
-        }
+
+    // Find which baseIds belong to selected division
+    const div = selectedDivisionId ? divisions.find((d) => d.id === selectedDivisionId) : null;
+    const divBaseIds = div ? new Set(div.baseIds) : null;
+
+    // Toggle visibility of each base's boundary layers
+    bases.forEach((base) => {
+      const show = divBaseIds ? divBaseIds.has(base.id) : false;
+      if (map.getLayer(`boundary-fill-${base.id}`)) {
+        map.setLayoutProperty(`boundary-fill-${base.id}`, 'visibility', show ? 'visible' : 'none');
+        map.setLayoutProperty(`boundary-line-${base.id}`, 'visibility', show ? 'visible' : 'none');
+      }
+    });
+
+    // Toggle base markers filter
+    if (map.getLayer('base-markers-circle')) {
+      if (divBaseIds) {
+        map.setFilter('base-markers-circle', ['in', ['get', 'baseId'], ['literal', [...divBaseIds]]]);
+      } else {
+        map.setFilter('base-markers-circle', ['==', ['get', 'baseId'], '']); // hide all
       }
     }
-  }, [selectedDivisionId, selectedBaseId, mapReady]);
+
+    // Fly to division bounds
+    if (div && !selectedBaseId) {
+      const divBases = div.baseIds.map((bid) => allBases.find((b) => b.id === bid)).filter(Boolean);
+      const allLngs = divBases.flatMap((b) => b!.boundary.map(([, lng]) => lng));
+      const allLats = divBases.flatMap((b) => b!.boundary.map(([lat]) => lat));
+      if (allLngs.length > 0) {
+        map.fitBounds(
+          new maplibregl.LngLatBounds([Math.min(...allLngs), Math.min(...allLats)], [Math.max(...allLngs), Math.max(...allLats)]),
+          { padding: 60, duration: 1500, pitch: 0, bearing: 0 },
+        );
+      }
+    }
+
+    // When no division selected, reset to Seoul view
+    if (!selectedDivisionId && !selectedBaseId) {
+      map.flyTo({ center: SEOUL_CENTER, zoom: DEFAULT_ZOOM, pitch: 0, bearing: 0, duration: 1500 });
+    }
+  }, [selectedDivisionId, selectedBaseId, mapReady, bases]);
 
   // Fly to selected base
   useEffect(() => {
@@ -215,8 +240,8 @@ export default function MapView() {
         type: 'geojson',
         data: { type: 'Feature', properties: { baseId: base.id }, geometry: { type: 'Polygon', coordinates: [coords] } },
       });
-      map.addLayer({ id: `boundary-fill-${base.id}`, type: 'fill', source: sourceId, paint: { 'fill-color': '#cc2222', 'fill-opacity': 0.18 }, minzoom: 13 });
-      map.addLayer({ id: `boundary-line-${base.id}`, type: 'line', source: sourceId, paint: { 'line-color': '#cc3333', 'line-width': 2, 'line-opacity': 0.7, 'line-dasharray': [6, 4] }, minzoom: 13 });
+      map.addLayer({ id: `boundary-fill-${base.id}`, type: 'fill', source: sourceId, layout: { visibility: 'none' }, paint: { 'fill-color': '#cc2222', 'fill-opacity': 0.18 } });
+      map.addLayer({ id: `boundary-line-${base.id}`, type: 'line', source: sourceId, layout: { visibility: 'none' }, paint: { 'line-color': '#cc3333', 'line-width': 2, 'line-opacity': 0.7, 'line-dasharray': [6, 4] } });
 
       map.on('mouseenter', `boundary-fill-${base.id}`, () => {
         map.getCanvas().style.cursor = 'pointer';
@@ -247,7 +272,8 @@ export default function MapView() {
       };
       map.addSource('base-markers', { type: 'geojson', data: markersGeoJSON });
       map.addLayer({
-        id: 'base-markers-circle', type: 'circle', source: 'base-markers', minzoom: 13,
+        id: 'base-markers-circle', type: 'circle', source: 'base-markers',
+        filter: ['==', ['get', 'baseId'], ''], // hidden by default
         layout: { 'circle-sort-key': ['match', ['get', 'alertLevel'], 'critical', 3, 'warning', 2, 'caution', 1, 0] },
         paint: { 'circle-radius': 6, 'circle-color': ['get', 'color'], 'circle-opacity': 0.8, 'circle-stroke-width': 1.5, 'circle-stroke-color': ['get', 'color'], 'circle-stroke-opacity': 0.5 },
       });
