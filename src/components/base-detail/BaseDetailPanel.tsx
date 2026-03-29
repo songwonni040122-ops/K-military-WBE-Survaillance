@@ -237,6 +237,13 @@ function GuidelinesList({
             onMouseLeave={(e) => { e.currentTarget.style.background = 'rgba(255,255,255,0.02)'; }}
           >
             <span style={{
+              fontFamily: 'var(--font-mono)', fontSize: '0.5rem',
+              color: g.tier === 'emergency' ? '#ff1744' : g.tier === 'seasonal' ? '#ffab00' : '#00e5ff',
+              minWidth: 32,
+            }}>
+              {g.tier === 'emergency' ? '긴급' : g.tier === 'seasonal' ? '계절' : '정기'}
+            </span>
+            <span style={{
               fontFamily: 'var(--font-mono)', fontSize: '0.7rem',
               color: 'var(--text-primary)', flex: 1,
             }}>

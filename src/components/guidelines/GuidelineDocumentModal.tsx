@@ -7,7 +7,13 @@ const seasonLabels: Record<string, string> = {
   spring: '봄', summer: '여름', autumn: '가을', winter: '겨울',
 };
 const severityLabels: Record<string, string> = {
-  caution: '주의', warning: '경고', critical: '위험',
+  normal: '정상', caution: '주의', warning: '경고', critical: '위험',
+};
+const tierLabels: Record<string, string> = {
+  regular: '정기 방역', seasonal: '계절 예방', emergency: '긴급 방역',
+};
+const tierColors: Record<string, string> = {
+  regular: '#00e5ff', seasonal: '#ffab00', emergency: '#ff1744',
 };
 
 interface Props {
@@ -54,13 +60,23 @@ export default function GuidelineDocumentModal({ guideline, baseName, onClose }:
                 방역지침 공문 #{guideline.id.replace('guide-', '')}
               </div>
             </div>
-            <div style={{
-              padding: '3px 10px', borderRadius: 2,
-              background: `${severityColor}20`, color: severityColor,
-              border: `1px solid ${severityColor}40`,
-              fontSize: '0.65rem', fontWeight: 700, textTransform: 'uppercase',
-            }}>
-              {severityLabels[guideline.severity] || guideline.severity}
+            <div style={{ display: 'flex', gap: 6, alignItems: 'center' }}>
+              <div style={{
+                padding: '3px 8px', borderRadius: 2,
+                background: `${tierColors[guideline.tier] || '#888'}15`, color: tierColors[guideline.tier] || '#888',
+                border: `1px solid ${tierColors[guideline.tier] || '#888'}40`,
+                fontSize: '0.6rem', fontWeight: 600,
+              }}>
+                {tierLabels[guideline.tier] || guideline.tier}
+              </div>
+              <div style={{
+                padding: '3px 8px', borderRadius: 2,
+                background: `${severityColor}20`, color: severityColor,
+                border: `1px solid ${severityColor}40`,
+                fontSize: '0.6rem', fontWeight: 700, textTransform: 'uppercase',
+              }}>
+                {severityLabels[guideline.severity] || guideline.severity}
+              </div>
             </div>
           </div>
 
