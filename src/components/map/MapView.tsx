@@ -93,12 +93,13 @@ export default function MapView() {
       setMapInstance(map);
       setMapReady(true);
 
-      // Slow idle rotation - always active except during direct user drag
+      // Slow idle rotation - pauses during flyTo and user interaction
       let bearing = 0;
       let rotating = true;
+      let flying = false;
       const rotate = () => {
         if (!mapRef.current) return;
-        if (rotating) {
+        if (rotating && !flying) {
           bearing += 0.05;
           mapRef.current.setBearing(bearing % 360);
         }
@@ -106,7 +107,14 @@ export default function MapView() {
       };
       rotationRef.current = requestAnimationFrame(rotate);
 
-      // Pause only on direct user drag, resume after idle
+      // Pause during flyTo/fitBounds animations
+      map.on('movestart', () => { flying = true; });
+      map.on('moveend', () => {
+        flying = false;
+        bearing = map.getBearing();
+      });
+
+      // Pause on direct user interaction, resume after idle
       let idleTimer: ReturnType<typeof setTimeout> | null = null;
       const pauseRotation = () => {
         rotating = false;
