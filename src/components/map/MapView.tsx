@@ -67,6 +67,7 @@ export default function MapView() {
   const selectDivision = useAppStore((s) => s.selectDivision);
   const selectZone = useAppStore((s) => s.selectZone);
   const selectedBaseId = useAppStore((s) => s.selectedBaseId);
+  const selectedZoneId = useAppStore((s) => s.selectedZoneId);
   const selectedDivisionId = useAppStore((s) => s.selectedDivisionId);
   const setMapInstance = useAppStore((s) => s.setMapInstance);
 
@@ -224,6 +225,22 @@ export default function MapView() {
       }
     });
   }, [selectedBaseId, mapReady, bases]);
+
+  // Show zone polygons when a zone is selected from sidebar
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map || !mapReady) return;
+
+    if (selectedZoneId && selectedBaseId) {
+      map.setFilter('zone-fills', ['all', ['==', ['geometry-type'], 'Polygon'], ['==', ['get', 'baseId'], selectedBaseId]]);
+      map.setFilter('zone-outlines', ['all', ['==', ['geometry-type'], 'Polygon'], ['==', ['get', 'baseId'], selectedBaseId]]);
+      map.setFilter('zone-borders', ['all', ['==', ['geometry-type'], 'LineString'], ['==', ['get', 'baseId'], selectedBaseId]]);
+    } else if (!selectedZoneId) {
+      map.setFilter('zone-fills', ['all', ['==', ['geometry-type'], 'Polygon'], ['==', ['get', 'baseId'], '']]);
+      map.setFilter('zone-outlines', ['all', ['==', ['geometry-type'], 'Polygon'], ['==', ['get', 'baseId'], '']]);
+      map.setFilter('zone-borders', ['all', ['==', ['geometry-type'], 'LineString'], ['==', ['get', 'baseId'], '']]);
+    }
+  }, [selectedZoneId, selectedBaseId, mapReady]);
 
   // Add all layers
   useEffect(() => {
