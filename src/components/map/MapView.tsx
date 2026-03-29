@@ -360,7 +360,10 @@ export default function MapView() {
     <div style={{ position: 'relative', width: '100%', height: '100%' }}>
       <div ref={mapContainerRef} style={{ width: '100%', height: '100%', background: '#0a0a0f' }} />
       <MapControls />
-      {viewMode !== 'overview' && <BackButton />}
+      <div style={{ position: 'absolute', top: 12, left: 12, zIndex: 1000, display: 'flex', gap: 6 }}>
+        {viewMode !== 'overview' && <BackButton />}
+        <HomeButton />
+      </div>
       <style>{`
         .maplibregl-popup-content { background: transparent !important; padding: 0 !important; box-shadow: none !important; }
         .maplibregl-popup-tip { display: none !important; }
@@ -369,23 +372,43 @@ export default function MapView() {
   );
 }
 
+const btnStyle = {
+  background: 'rgba(10,10,15,0.9)',
+  border: '1px solid rgba(0,229,255,0.3)',
+  color: '#00e5ff',
+  fontFamily: 'var(--font-mono)',
+  fontSize: '0.7rem',
+  padding: '6px 14px',
+  cursor: 'pointer',
+  borderRadius: 2,
+  backdropFilter: 'blur(8px)',
+} as const;
+
 function BackButton() {
   const goBack = useAppStore((s) => s.goBack);
-  const mapInstance = useAppStore((s) => s.mapInstance);
-  const handleBack = useCallback(() => {
-    goBack();
-    if (mapInstance && !useAppStore.getState().selectedBaseId && !useAppStore.getState().selectedDivisionId) {
-      mapInstance.flyTo({ center: SEOUL_CENTER, zoom: DEFAULT_ZOOM, pitch: 0, bearing: 0, duration: 1500 });
-    }
-  }, [goBack, mapInstance]);
   return (
-    <button onClick={handleBack} style={{
-      position: 'absolute', top: 12, left: 12, zIndex: 1000,
-      background: 'rgba(10,10,15,0.9)', border: '1px solid rgba(0,229,255,0.3)',
-      color: '#00e5ff', fontFamily: 'var(--font-mono)', fontSize: '0.7rem',
-      padding: '6px 14px', cursor: 'pointer', borderRadius: 2, backdropFilter: 'blur(8px)',
-    }}>
+    <button onClick={goBack} style={btnStyle}>
       &larr; 뒤로
+    </button>
+  );
+}
+
+function HomeButton() {
+  const mapInstance = useAppStore((s) => s.mapInstance);
+  const handleHome = useCallback(() => {
+    useAppStore.setState({
+      viewMode: 'overview',
+      selectedDivisionId: null,
+      selectedBaseId: null,
+      selectedZoneId: null,
+    });
+    if (mapInstance) {
+      mapInstance.flyTo({ center: SEOUL_CENTER, zoom: DEFAULT_ZOOM, pitch: 30, bearing: mapInstance.getBearing(), duration: 1500 });
+    }
+  }, [mapInstance]);
+  return (
+    <button onClick={handleHome} style={btnStyle}>
+      HOME
     </button>
   );
 }
