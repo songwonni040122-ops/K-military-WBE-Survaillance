@@ -93,29 +93,32 @@ export default function MapView() {
       setMapInstance(map);
       setMapReady(true);
 
-      // Slow idle rotation
+      // Slow idle rotation - always active except during direct user drag
       let bearing = 0;
+      let rotating = true;
       const rotate = () => {
         if (!mapRef.current) return;
-        bearing += 0.03;
-        mapRef.current.setBearing(bearing % 360);
+        if (rotating) {
+          bearing += 0.05;
+          mapRef.current.setBearing(bearing % 360);
+        }
         rotationRef.current = requestAnimationFrame(rotate);
       };
       rotationRef.current = requestAnimationFrame(rotate);
 
-      // Stop rotation on user interaction, resume after idle
+      // Pause only on direct user drag, resume after idle
       let idleTimer: ReturnType<typeof setTimeout> | null = null;
-      const stopRotation = () => {
-        if (rotationRef.current) { cancelAnimationFrame(rotationRef.current); rotationRef.current = null; }
+      const pauseRotation = () => {
+        rotating = false;
         if (idleTimer) clearTimeout(idleTimer);
         idleTimer = setTimeout(() => {
           bearing = mapRef.current?.getBearing() || 0;
-          rotationRef.current = requestAnimationFrame(rotate);
-        }, 8000);
+          rotating = true;
+        }, 3000);
       };
-      map.on('mousedown', stopRotation);
-      map.on('touchstart', stopRotation);
-      map.on('wheel', stopRotation);
+      map.on('mousedown', pauseRotation);
+      map.on('touchstart', pauseRotation);
+      map.on('wheel', pauseRotation);
     });
     return () => {
       if (rotationRef.current) cancelAnimationFrame(rotationRef.current);
