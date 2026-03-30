@@ -18,6 +18,8 @@ interface AppState {
   goBack: () => void;
 }
 
+const PANEL_DELAY = 600; // ms delay for panel transition after map starts moving
+
 export const useAppStore = create<AppState>((set, get) => ({
   viewMode: 'overview',
   selectedDivisionId: null,
@@ -26,17 +28,16 @@ export const useAppStore = create<AppState>((set, get) => ({
   mapInstance: null,
   setViewMode: (mode) => set({ viewMode: mode }),
   setMapInstance: (map) => set({ mapInstance: map }),
-  selectDivision: (divId) => set({
-    viewMode: 'division-detail',
-    selectedDivisionId: divId,
-    selectedBaseId: null,
-    selectedZoneId: null,
-  }),
-  selectBase: (baseId) => set({
-    viewMode: 'base-detail',
-    selectedBaseId: baseId,
-    selectedZoneId: null,
-  }),
+  selectDivision: (divId) => {
+    // Update selection immediately (triggers map flyTo)
+    set({ selectedDivisionId: divId, selectedBaseId: null, selectedZoneId: null });
+    // Delay panel transition so map zoom happens first
+    setTimeout(() => set({ viewMode: 'division-detail' }), PANEL_DELAY);
+  },
+  selectBase: (baseId) => {
+    set({ selectedBaseId: baseId, selectedZoneId: null });
+    setTimeout(() => set({ viewMode: 'base-detail' }), PANEL_DELAY);
+  },
   selectZone: (zoneId) => set({ selectedZoneId: zoneId }),
   clearZone: () => set({ selectedZoneId: null }),
   goBack: () => {
@@ -44,9 +45,14 @@ export const useAppStore = create<AppState>((set, get) => ({
     if (state.selectedZoneId) {
       set({ selectedZoneId: null });
     } else if (state.selectedBaseId) {
-      set({ selectedBaseId: null, viewMode: state.selectedDivisionId ? 'division-detail' : 'overview' });
+      // Clear base first → triggers map zoom out
+      set({ selectedBaseId: null });
+      setTimeout(() => {
+        set({ viewMode: get().selectedDivisionId ? 'division-detail' : 'overview' });
+      }, PANEL_DELAY);
     } else if (state.selectedDivisionId) {
-      set({ selectedDivisionId: null, viewMode: 'overview' });
+      set({ selectedDivisionId: null });
+      setTimeout(() => set({ viewMode: 'overview' }), PANEL_DELAY);
     } else {
       set({ viewMode: 'overview', selectedDivisionId: null, selectedBaseId: null, selectedZoneId: null });
     }

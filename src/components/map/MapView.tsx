@@ -421,12 +421,14 @@ function BackButton() {
 function HomeButton() {
   const mapInstance = useAppStore((s) => s.mapInstance);
   const handleHome = useCallback(() => {
+    // Clear selections immediately → triggers map zoom out
     useAppStore.setState({
-      viewMode: 'overview',
       selectedDivisionId: null,
       selectedBaseId: null,
       selectedZoneId: null,
     });
+    // Panel follows after delay
+    setTimeout(() => useAppStore.setState({ viewMode: 'overview' }), 600);
     if (mapInstance) {
       mapInstance.flyTo({ center: SEOUL_CENTER, zoom: DEFAULT_ZOOM, pitch: 30, bearing: mapInstance.getBearing(), duration: 1500 });
     }
