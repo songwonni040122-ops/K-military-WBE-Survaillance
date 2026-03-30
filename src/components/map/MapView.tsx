@@ -14,6 +14,9 @@ import type { AlertLevel } from '../../types';
 const SEOUL_CENTER: [number, number] = [126.98, 37.56];
 const DEFAULT_ZOOM = 11;
 
+// Module-level rotation control (shared between MapView and buttons)
+const rotationControl: { pause: (ms?: number) => void; resume: () => void } = { pause: () => {}, resume: () => {} };
+
 function createHatchPattern(): { width: number; height: number; data: Uint8Array } {
   const size = 32;
   const canvas = document.createElement('canvas');
@@ -29,14 +32,19 @@ function createHatchPattern(): { width: number; height: number; data: Uint8Array
   return { width: size, height: size, data: new Uint8Array(imgData.data.buffer) };
 }
 
-function flyToBounds(map: maplibregl.Map, baseId: string) {
+function flyToBoundsWithPause(
+  map: maplibregl.Map,
+  baseId: string,
+  rotRef: { pause: (ms?: number) => void },
+) {
   const base = allBases.find((b) => b.id === baseId);
   if (!base) return;
   const lngs = base.boundary.map(([, lng]) => lng);
   const lats = base.boundary.map(([lat]) => lat);
+  rotRef.pause(3000);
   map.fitBounds(
     new maplibregl.LngLatBounds([Math.min(...lngs), Math.min(...lats)], [Math.max(...lngs), Math.max(...lats)]),
-    { padding: 80, duration: 2000, pitch: 50, bearing: map.getBearing() },
+    { padding: 80, duration: 2500, pitch: 50, bearing: map.getBearing() },
   );
 }
 
@@ -59,7 +67,7 @@ export default function MapView() {
   const mapContainerRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<maplibregl.Map | null>(null);
   const popupRef = useRef<maplibregl.Popup | null>(null);
-  const rotationRef = useRef<number | null>(null);
+  const rotationRef = useRef<{ raf: number | null; pause: () => void; resume: () => void }>({ raf: null, pause: () => {}, resume: () => {} });
   const [mapReady, setMapReady] = useState(false);
 
   const { bases } = useBaseData();
@@ -94,43 +102,48 @@ export default function MapView() {
       setMapInstance(map);
       setMapReady(true);
 
-      // Slow idle rotation - pauses during flyTo and user interaction
+      // Slow idle rotation with explicit pause/resume control
       let bearing = 0;
-      let rotating = true;
-      let flying = false;
+      let active = true;
+      let resumeTimer: ReturnType<typeof setTimeout> | null = null;
+
       const rotate = () => {
         if (!mapRef.current) return;
-        if (rotating && !flying) {
+        if (active) {
           bearing += 0.05;
-          mapRef.current.setBearing(bearing % 360);
+          mapRef.current.rotateTo(bearing % 360, { duration: 0 });
         }
-        rotationRef.current = requestAnimationFrame(rotate);
+        rotationRef.current.raf = requestAnimationFrame(rotate);
       };
-      rotationRef.current = requestAnimationFrame(rotate);
 
-      // Pause during flyTo/fitBounds animations
-      map.on('movestart', () => { flying = true; });
-      map.on('moveend', () => {
-        flying = false;
-        bearing = map.getBearing();
-      });
-
-      // Pause on direct user interaction, resume after idle
-      let idleTimer: ReturnType<typeof setTimeout> | null = null;
-      const pauseRotation = () => {
-        rotating = false;
-        if (idleTimer) clearTimeout(idleTimer);
-        idleTimer = setTimeout(() => {
-          bearing = mapRef.current?.getBearing() || 0;
-          rotating = true;
-        }, 3000);
+      const pause = (resumeAfterMs?: number) => {
+        active = false;
+        if (resumeTimer) clearTimeout(resumeTimer);
+        if (resumeAfterMs) {
+          resumeTimer = setTimeout(() => {
+            bearing = mapRef.current?.getBearing() || 0;
+            active = true;
+          }, resumeAfterMs);
+        }
       };
-      map.on('mousedown', pauseRotation);
-      map.on('touchstart', pauseRotation);
-      map.on('wheel', pauseRotation);
+
+      const resume = () => {
+        bearing = mapRef.current?.getBearing() || 0;
+        active = true;
+      };
+
+      rotationRef.current = { raf: null, pause, resume };
+      rotationRef.current.raf = requestAnimationFrame(rotate);
+      rotationControl.pause = pause;
+      rotationControl.resume = resume;
+
+      // Pause on direct user interaction, auto-resume after 3s
+      map.on('mousedown', () => pause(3000));
+      map.on('touchstart', () => pause(3000));
+      map.on('wheel', () => pause(3000));
     });
     return () => {
-      if (rotationRef.current) cancelAnimationFrame(rotationRef.current);
+      if (rotationRef.current.raf) cancelAnimationFrame(rotationRef.current.raf);
       setMapInstance(null); map.remove(); mapRef.current = null;
     };
   }, [setMapInstance]);
@@ -191,16 +204,18 @@ export default function MapView() {
       const allLngs = divBases.flatMap((b) => b!.boundary.map(([, lng]) => lng));
       const allLats = divBases.flatMap((b) => b!.boundary.map(([lat]) => lat));
       if (allLngs.length > 0) {
+        rotationRef.current.pause(2500);
         map.fitBounds(
           new maplibregl.LngLatBounds([Math.min(...allLngs), Math.min(...allLats)], [Math.max(...allLngs), Math.max(...allLats)]),
-          { padding: 60, duration: 1500, pitch: 30, bearing: map.getBearing() },
+          { padding: 60, duration: 2000, pitch: 30, bearing: map.getBearing() },
         );
       }
     }
 
     // When no division and no base selected, reset to Seoul view
     if (!selectedDivisionId && !selectedBaseId) {
-      map.flyTo({ center: SEOUL_CENTER, zoom: DEFAULT_ZOOM, pitch: 30, bearing: map.getBearing(), duration: 1500 });
+      rotationRef.current.pause(2500);
+      map.flyTo({ center: SEOUL_CENTER, zoom: DEFAULT_ZOOM, pitch: 30, bearing: map.getBearing(), duration: 2000 });
     }
   }, [selectedDivisionId, selectedBaseId, mapReady, bases]);
 
@@ -208,7 +223,7 @@ export default function MapView() {
   useEffect(() => {
     const map = mapRef.current;
     if (!map || !mapReady || !selectedBaseId) return;
-    flyToBounds(map, selectedBaseId);
+    flyToBoundsWithPause(map, selectedBaseId, rotationRef.current);
     bases.forEach((base) => {
       if (!map.getLayer(`boundary-fill-${base.id}`)) return;
       if (base.id === selectedBaseId) {
@@ -430,7 +445,8 @@ function HomeButton() {
     // Panel follows after delay
     setTimeout(() => useAppStore.setState({ viewMode: 'overview' }), 600);
     if (mapInstance) {
-      mapInstance.flyTo({ center: SEOUL_CENTER, zoom: DEFAULT_ZOOM, pitch: 30, bearing: mapInstance.getBearing(), duration: 1500 });
+      rotationControl.pause(2500);
+      mapInstance.flyTo({ center: SEOUL_CENTER, zoom: DEFAULT_ZOOM, pitch: 30, bearing: mapInstance.getBearing(), duration: 2000 });
     }
   }, [mapInstance]);
   return (
