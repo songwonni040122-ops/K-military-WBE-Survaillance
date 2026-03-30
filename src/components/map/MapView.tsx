@@ -67,7 +67,7 @@ export default function MapView() {
   const mapContainerRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<maplibregl.Map | null>(null);
   const popupRef = useRef<maplibregl.Popup | null>(null);
-  const rotationRef = useRef<{ raf: number | null; pause: () => void; resume: () => void }>({ raf: null, pause: () => {}, resume: () => {} });
+  const rotationRef = useRef<{ raf: number | null; pause: (ms?: number) => void; resume: () => void }>({ raf: null, pause: () => {}, resume: () => {} });
   const [mapReady, setMapReady] = useState(false);
 
   const { bases } = useBaseData();
